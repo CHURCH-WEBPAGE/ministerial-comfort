@@ -8,3 +8,27 @@
   }
 }
 
+@layer utilities {
+  .text-blue-600 {
+    color: #2867AE;
+  }
+  .bg-blue-600 {
+    background-color: #2867AE;
+  }
+  .bg-blue-700 {
+    background-color: #1e4d7a;
+  }
+  .hover\:bg-blue-700:hover {
+    background-color: #1e4d7a;
+  }
+  .hover\:text-blue-600:hover {
+    color: #2867AE;
+  }
+  .border-blue-500 {
+    border-color: #2867AE;
+  }
+  .focus\:border-blue-500:focus {
+    border-color: #2867AE;
+  }
+}
+

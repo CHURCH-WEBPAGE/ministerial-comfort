@@ -10,8 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          blue: "#1E40AF",
+          blue: "#2867AE",
           red: "#DC2626",
+        },
+        blue: {
+          500: "#2867AE",
+          600: "#2867AE",
+          700: "#1e4d7a",
         },
       },
     },

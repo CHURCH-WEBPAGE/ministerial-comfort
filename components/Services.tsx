@@ -1,4 +1,5 @@
 import ServiceCard from './ServiceCard';
+import Link from 'next/link';
 
 const services = [
   {
@@ -35,12 +36,12 @@ export default function Services() {
           <h2 className="text-4xl md:text-5xl font-bold text-blue-600">
             Our Programs & Services
           </h2>
-          <a href="#" className="text-red-600 hover:text-red-700 font-semibold text-base">
+          <Link href="/services" className="text-red-600 hover:text-red-700 font-semibold text-base">
             View all
-          </a>
+          </Link>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          {services.map((service, index) => (
+          {services.slice(0, 4).map((service, index) => (
             <ServiceCard key={index} title={service.title} image={service.image} />
           ))}
         </div>
