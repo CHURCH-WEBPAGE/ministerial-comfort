@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const galleryImages = [
   { src: '/assets/frontview.svg', alt: 'Front view of building' },
@@ -13,9 +14,9 @@ export default function Gallery() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-blue-600">Gallery</h2>
-          <a href="#" className="text-red-600 hover:text-red-700 font-semibold text-sm md:text-base">
+          <Link href="/gallery" className="text-red-600 hover:text-red-700 font-semibold text-sm md:text-base">
             View all
-          </a>
+          </Link>
         </div>
         <div className="grid grid-cols-2 gap-6">
           {galleryImages.map((item, index) => (
