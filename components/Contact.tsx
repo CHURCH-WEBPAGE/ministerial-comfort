@@ -13,7 +13,6 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log('Form submitted:', formData);
   };
 
@@ -28,7 +27,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-20 bg-black text-white overflow-hidden">
-      {/* Background Image with blur */}
       <div className="absolute inset-0">
         <Image
           src="/assets/helpingministersbg.svg"
@@ -42,9 +40,7 @@ export default function Contact() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Top Section - Text on left, Images on right */}
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-16">
-            {/* Left Side - Text */}
             <div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">
                 Helping ministers
@@ -55,7 +51,6 @@ export default function Contact() {
               </h2>
             </div>
 
-            {/* Right Side - Images Grid */}
             <div className="grid grid-cols-2 gap-4">
               <div className="relative h-48 md:h-56 rounded-lg overflow-hidden border-2 border-blue-500 shadow-lg col-start-2 row-start-1">
                 <Image
@@ -90,7 +85,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Bottom Section - Contact Form */}
           <div className="bg-black/60 backdrop-blur-sm rounded-lg p-6 md:p-8 border border-white/20 shadow-xl max-w-2xl mx-auto">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">

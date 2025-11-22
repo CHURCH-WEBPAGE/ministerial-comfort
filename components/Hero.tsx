@@ -17,7 +17,6 @@ export default function Hero() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Auto-advance slides
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % heroImages.length);
     }, 5000);
@@ -31,7 +30,6 @@ export default function Hero() {
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-    // Reset auto-advance timer
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -62,7 +60,6 @@ export default function Hero() {
       setCurrentIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
     }
 
-    // Reset auto-advance timer
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -78,7 +75,6 @@ export default function Hero() {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Background Images */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
           <div
@@ -100,10 +96,8 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 z-10" />
 
-      {/* Content - positioned slightly to the left as per Figma */}
       <div className="relative z-20 h-full flex items-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className=" ml-0 md:ml-8 lg:ml-16">
@@ -124,7 +118,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Dots Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
         {heroImages.map((_, index) => (
           <button

@@ -31,11 +31,11 @@ export default function Services() {
   return (
     <section id="services" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center mb-12">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-blue-600">
             Our Programs & Services
           </h2>
-          <a href="#" className="text-red-600 hover:text-red-700 font-semibold text-sm md:text-base">
+          <a href="#" className="text-red-600 hover:text-red-700 font-semibold text-base">
             View all
           </a>
         </div>
