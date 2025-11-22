@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function EligibilityBanner() {
   return (
@@ -27,9 +28,12 @@ export default function EligibilityBanner() {
                   </p>
                 </div>
                 <div className="flex items-center justify-center md:justify-end">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg">
+                  <Link
+                    href="/eligibility"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg inline-block"
+                  >
                     View
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
