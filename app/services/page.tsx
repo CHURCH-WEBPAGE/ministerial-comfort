@@ -93,8 +93,6 @@ export default function ServicesPage() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"
                   loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">

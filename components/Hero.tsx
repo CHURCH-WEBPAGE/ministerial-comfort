@@ -88,12 +88,9 @@ export default function Hero() {
               src={image}
               alt={`Hero image ${index + 1}`}
               fill
-              priority={index === 0}
               className="object-cover"
               sizes="100vw"
               loading={index === 0 ? 'eager' : 'lazy'}
-              fetchPriority={index === 0 ? 'high' : 'low'}
-              decoding="async"
             />
           </div>
         ))}

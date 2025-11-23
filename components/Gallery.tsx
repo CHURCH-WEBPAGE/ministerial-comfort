@@ -28,8 +28,6 @@ export default function Gallery() {
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
                 sizes="(max-width: 768px) 50vw, 50vw"
                 loading="lazy"
-                decoding="async"
-                fetchPriority="low"
               />
             </div>
           ))}

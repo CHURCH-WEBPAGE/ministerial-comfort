@@ -185,8 +185,6 @@ export default function RegisterPage() {
           style={{ objectPosition: 'center' }}
           sizes="100vw"
           loading="lazy"
-          decoding="async"
-          fetchPriority="low"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
         

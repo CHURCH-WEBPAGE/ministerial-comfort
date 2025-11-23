@@ -14,8 +14,6 @@ export default function EligibilityBanner() {
               className="object-cover"
               sizes="100vw"
               loading="lazy"
-              decoding="async"
-              fetchPriority="low"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
             

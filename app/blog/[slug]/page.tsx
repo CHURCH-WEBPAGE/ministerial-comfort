@@ -196,8 +196,6 @@ export default function BlogDetailPage() {
           style={{ objectPosition: 'center' }}
           sizes="100vw"
           loading="lazy"
-          decoding="async"
-          fetchPriority="low"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
         
@@ -267,8 +265,6 @@ export default function BlogDetailPage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
                     loading="lazy"
-          decoding="async"
-          fetchPriority="low"
                   />
                 </div>
                 <div className="p-6">
