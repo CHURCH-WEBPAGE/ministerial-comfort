@@ -34,13 +34,13 @@ export default function Header() {
             <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
               Home
             </Link>
-            <Link href="#about" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/#about" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
               About
             </Link>
-            <Link href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/#contact" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
               Contact
             </Link>
-            <Link href="#blog" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
               Blog
             </Link>
             <Link href="#gallery" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
@@ -96,21 +96,21 @@ export default function Header() {
                 Home
               </Link>
               <Link
-                href="#about"
+                href="/#about"
                 className="text-gray-700 hover:text-blue-600 transition-colors font-medium px-4"
                 onClick={closeMenu}
               >
                 About
               </Link>
               <Link
-                href="#contact"
+                href="/#contact"
                 className="text-gray-700 hover:text-blue-600 transition-colors font-medium px-4"
                 onClick={closeMenu}
               >
                 Contact
               </Link>
               <Link
-                href="#blog"
+                href="/blog"
                 className="text-gray-700 hover:text-blue-600 transition-colors font-medium px-4"
                 onClick={closeMenu}
               >

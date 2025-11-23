@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollDownArrow from '@/components/ScrollDownArrow';
 
 export default function EligibilityPage() {
   const router = useRouter();
@@ -223,6 +224,7 @@ export default function EligibilityPage() {
       </div>
 
       <Footer />
+      <ScrollDownArrow />
     </main>
   );
 }

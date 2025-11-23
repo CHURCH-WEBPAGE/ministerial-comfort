@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollDownArrow from '@/components/ScrollDownArrow';
 
 const galleryImages = [
   { src: '/assets/goopening.svg', alt: 'Opening ceremony' },
@@ -78,6 +79,7 @@ export default function GalleryPage() {
         </div>
       </div>
       <Footer />
+      <ScrollDownArrow />
     </main>
   );
 }

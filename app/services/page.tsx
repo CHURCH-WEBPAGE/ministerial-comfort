@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollDownArrow from '@/components/ScrollDownArrow';
 
 const services = [
   {
@@ -110,6 +111,7 @@ export default function ServicesPage() {
         </div>
       </div>
       <Footer />
+      <ScrollDownArrow />
     </main>
   );
 }
