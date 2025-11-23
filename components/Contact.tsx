@@ -55,7 +55,7 @@ export default function Contact() {
           fill
           className="object-cover opacity-30 blur-sm"
           sizes="100vw"
-          quality={70}
+          loading="lazy"
         />
       </div>
 
@@ -80,7 +80,7 @@ export default function Contact() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  quality={70}
+                  loading="lazy"
                 />
               </div>
               <div className="relative h-48 md:h-56 rounded-lg overflow-hidden border-2 border-red-500 shadow-lg col-start-1 row-start-2">
@@ -90,7 +90,7 @@ export default function Contact() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  quality={70}
+                  loading="lazy"
                 />
               </div>
               <div className="relative h-48 md:h-56 rounded-lg overflow-hidden border-2 border-orange-500 shadow-lg col-start-2 row-start-3">
@@ -100,7 +100,7 @@ export default function Contact() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  quality={70}
+                  loading="lazy"
                 />
               </div>
             </div>

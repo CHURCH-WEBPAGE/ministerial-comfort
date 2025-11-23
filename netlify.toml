@@ -28,29 +28,33 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Optimize image loading
+# Optimize image loading with aggressive caching
 [[headers]]
-  for = "/*.jpg"
+  for = "/assets/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Accept-Ranges = "bytes"
+
+[[headers]]
+  for = "/assets/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Accept-Ranges = "bytes"
+
+[[headers]]
+  for = "/assets/*.svg"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.png"
+  for = "/assets/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Accept-Ranges = "bytes"
 
 [[headers]]
-  for = "/*.svg"
+  for = "/assets/*.avif"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.webp"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.avif"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Accept-Ranges = "bytes"
 

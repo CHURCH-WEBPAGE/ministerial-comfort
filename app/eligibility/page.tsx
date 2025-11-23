@@ -25,7 +25,7 @@ export default function EligibilityPage() {
           className="object-cover"
           style={{ objectPosition: 'top center' }}
           sizes="100vw"
-          quality={75}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
         <div className="relative z-10 h-full flex items-center">

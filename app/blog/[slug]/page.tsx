@@ -195,7 +195,7 @@ export default function BlogDetailPage() {
           className="object-cover"
           style={{ objectPosition: 'center' }}
           sizes="100vw"
-          quality={75}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
         
@@ -264,7 +264,7 @@ export default function BlogDetailPage() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    quality={75}
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">
