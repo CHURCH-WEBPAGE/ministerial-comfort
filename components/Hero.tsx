@@ -91,7 +91,8 @@ export default function Hero() {
               priority={index === 0}
               className="object-cover"
               sizes="100vw"
-              quality={90}
+              quality={index === 0 ? 90 : 75}
+              loading={index === 0 ? 'eager' : 'lazy'}
             />
           </div>
         ))}
