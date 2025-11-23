@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import NotificationBanner from '@/components/NotificationBanner';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
+      <NotificationBanner />
       <Hero />
       <About />
       <Services />

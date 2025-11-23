@@ -37,5 +37,8 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  .pause-animation {
+    animation-play-state: paused !important;
+  }
 }
 

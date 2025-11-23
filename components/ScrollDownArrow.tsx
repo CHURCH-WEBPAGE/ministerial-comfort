@@ -33,7 +33,7 @@ export default function ScrollDownArrow() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 animate-bounce">
+    <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-30 animate-bounce">
       <button
         onClick={scrollDown}
         className="bg-white/80 hover:bg-white backdrop-blur-sm rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
