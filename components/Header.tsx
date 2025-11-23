@@ -46,14 +46,17 @@ export default function Header() {
             <Link href="#gallery" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
               Gallery
             </Link>
-            <Link href="#news" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+            <Link href="/news" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
               News
             </Link>
           </nav>
 
-          <button className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-colors font-semibold shadow-md">
+          <Link 
+            href="/#contact" 
+            className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-colors font-semibold shadow-md"
+          >
             Get Started
-          </button>
+          </Link>
 
           <button
             onClick={toggleMenu}
@@ -124,18 +127,19 @@ export default function Header() {
                 Gallery
               </Link>
               <Link
-                href="#news"
+                href="/news"
                 className="text-gray-700 hover:text-blue-600 transition-colors font-medium px-4"
                 onClick={closeMenu}
               >
                 News
               </Link>
-              <button
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-colors font-semibold shadow-md mx-4 mt-2"
+              <Link
+                href="/#contact"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-colors font-semibold shadow-md mx-4 mt-2 block text-center"
                 onClick={closeMenu}
               >
                 Get Started
-              </button>
+              </Link>
             </nav>
           </div>
         )}

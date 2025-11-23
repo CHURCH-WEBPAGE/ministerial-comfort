@@ -30,5 +30,12 @@
   .focus\:border-blue-500:focus {
     border-color: #2867AE;
   }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 

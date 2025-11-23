@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const heroImages = [
   '/assets/hero2.jpg',
@@ -110,9 +111,12 @@ export default function Hero() {
                   You are not alone—support, restoration, and guidance are here for you
                 </p>
               </div>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg mt-6 md:mt-0 md:flex-shrink-0">
+              <Link 
+                href="/#contact"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg mt-6 md:mt-0 md:flex-shrink-0 inline-block text-center"
+              >
                 Get Support
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,28 +1,49 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useFormStore } from '@/store/formStore';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
-  });
+  const { contactForm, setContactForm, clearContactForm } = useFormStore();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    try {
+      // Show saving toast
+      const savingToast = toast.loading('Saving your message...', {
+        position: 'top-right',
+      });
+
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Show success toast
+      toast.update(savingToast, {
+        render: 'Message sent successfully! You will hear from us soon.',
+        type: 'success',
+        isLoading: false,
+        autoClose: 3000,
+      });
+
+      // Clear form
+      clearContactForm();
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    
+    // Save to store silently (no toast)
+    setContactForm({ [name]: value });
   };
 
   return (
@@ -96,7 +117,7 @@ export default function Contact() {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    value={formData.firstName}
+                    value={contactForm.firstName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-transparent border border-white/30 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                     placeholder="First Name"
@@ -111,7 +132,7 @@ export default function Contact() {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    value={formData.lastName}
+                    value={contactForm.lastName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-transparent border border-white/30 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                     placeholder="Last Name"
@@ -127,7 +148,7 @@ export default function Contact() {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
+                  value={contactForm.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-transparent border border-white/30 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="Email Address"
@@ -141,7 +162,7 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
+                  value={contactForm.message}
                   onChange={handleChange}
                   rows={5}
                   className="w-full px-4 py-3 bg-transparent border border-white/30 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 resize-none transition-colors"
