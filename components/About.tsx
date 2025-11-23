@@ -19,6 +19,8 @@ export default function About() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
               loading="lazy"
+              decoding="async"
+              fetchPriority="low"
             />
           </div>
         </div>

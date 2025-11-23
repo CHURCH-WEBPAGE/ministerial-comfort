@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     shortcut: "/assets/MCR logo 2.svg",
     apple: "/assets/MCR logo 2.svg",
   },
+  other: {
+    'preload-hero': '/assets/hero2.jpg',
+  },
 };
 
 export default function RootLayout({
@@ -20,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/assets/hero2.jpg" fetchPriority="high" />
+      </head>
       <body>
         {children}
         <ToastContainer
