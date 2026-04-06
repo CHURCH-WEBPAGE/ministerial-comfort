@@ -24,7 +24,7 @@ export default function EligibilityBanner() {
                     Our Eligibility Requirements
                   </h2>
                   <p className="text-lg text-gray-200 mb-8 leading-relaxed">
-                    To ensure that the Ministerial Comfort &amp; Renewal Initiative (MCR) serves those who genuinely need support, eligibility criteria have been established for ministers seeking to participate in the program.
+                    To ensure that the Ministerial Comfort &amp; Renewal (MCR) serves those who genuinely need support, eligibility criteria have been established for ministers seeking to participate in the program.
                   </p>
                 </div>
                 <div className="flex items-center justify-center md:justify-end">

@@ -46,7 +46,7 @@ const faqs = [
   {
     question: 'What is MCR all about?',
     answer:
-      'The Ministerial Comfort and Renewal Initiative (MCR) exists to restore hope, healing, and transformation to ministers in distress. We provide support, guidance, and renewal services to ensure that no servant of God walks alone in their season of struggle.',
+      'The Ministerial Comfort and Renewal (MCR) exists to restore hope, healing, and transformation to ministers in distress. We provide support, guidance, and renewal services to ensure that no servant of God walks alone in their season of struggle.',
   },
   {
     question: 'How can I register?',

@@ -78,7 +78,7 @@ export default function ServicesPage() {
           </div>
           
           <p className="text-lg text-gray-700 leading-relaxed max-w-4xl">
-            The Ministerial Comfort and Renewal Initiative will provide a range of programs tailored to support ministers facing emotional, spiritual, and mental health challenges. These programs are designed to promote healing, resilience, and renewed purpose in ministry.
+            The Ministerial Comfort and Renewal (MCR) will provide a range of programs tailored to support ministers facing emotional, spiritual, and mental health challenges. These programs are designed to promote healing, resilience, and renewed purpose in ministry.
           </p>
         </div>
 

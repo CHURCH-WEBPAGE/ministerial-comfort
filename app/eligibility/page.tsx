@@ -61,7 +61,7 @@ export default function EligibilityPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="max-w-4xl mx-auto">
           <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-12">
-            To ensure that the Ministerial Comfort &amp; Renewal Initiative (MCR) serves those who genuinely need support, the following eligibility criteria have been established for ministers seeking to participate in the program;
+            To ensure that the Ministerial Comfort &amp; Renewal (MCR) serves those who genuinely need support, the following eligibility criteria have been established for ministers seeking to participate in the program;
           </p>
 
           <div className="space-y-12">
