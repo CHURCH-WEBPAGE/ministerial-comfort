@@ -1,54 +1,93 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-interface NotificationItem {
+// ============================================================
+// EVENT DATA - UPDATE THIS SECTION TO CHANGE BANNER CONTENT
+// ============================================================
+// Each event has the following fields:
+//   name     - The title/topic of the event
+//   date     - The date of the event (e.g. "Friday 21st November, 2025")
+//   time     - Time with timezone info
+//   facilitator - Name and title of the facilitator
+//   audience - Who the event is for
+//   platform - Where the event is held (e.g. "Zoom")
+//   meetingId - Zoom meeting ID (optional)
+//   passcode  - Zoom passcode (optional)
+//
+// To add a new event:  Copy one of the objects below and fill in the details.
+// To remove an event:  Delete the entire { ... } block for that event.
+// To edit an event:    Change the relevant field values below.
+// ============================================================
+
+interface EventItem {
   id: string;
-  type: 'blog' | 'news' | 'seminar';
-  title: string;
-  slug: string;
-  isNew?: boolean;
-  isRecent?: boolean;
+  name: string;
+  date: string;
+  time: string;
+  facilitator: string;
+  audience: string;
+  platform: string;
+  meetingId?: string;
+  passcode?: string;
 }
 
-// Sample notification items - replace with API call later
-const notificationItems: NotificationItem[] = [
+const events: EventItem[] = [
+  // --- EVENT 1 ---
   {
     id: '1',
-    type: 'blog',
-    title: 'Proactive Emotional Health in Ministry',
-    slug: 'proactive-emotional-health-in-ministry',
-    isNew: true,
+    name: 'The Emotional Health of the Leader',
+    date: 'Thursday 30th October, 2025',
+    time: '2:00 PM - 3:30 PM WAT (Nigeria) / 9:00 AM - 10:30 AM ET (USA)',
+    facilitator: 'Rev. Paul Kuzma — Director, Centre for Spiritual Renewal, Christiansburg, VA, USA',
+    audience: 'National Board of Directors of the Foursquare Gospel Church in Nigeria',
+    platform: 'Live on Zoom',
+    meetingId: '881 1587 7622',
+    passcode: '45164',
   },
+
+  // --- EVENT 2 ---
   {
     id: '2',
-    type: 'news',
-    title: 'Building Emotional Resilience in Ministry',
-    slug: 'building-emotional-resilience-in-ministry',
-    isRecent: true,
+    name: 'Spiritual Renewal and Emotionally Healthy Discipleship',
+    date: 'Friday 21st November, 2025',
+    time: '2:00 PM - 3:30 PM WAT (Nigeria) / 8:00 AM - 9:30 AM ET (USA)',
+    facilitator: 'Rev. Paul Kuzma — Director, Centre for Spiritual Renewal, Christiansburg, VA, USA',
+    audience: 'National Executive Council of the Foursquare Gospel Church in Nigeria and invited ministers',
+    platform: 'Live on Zoom',
+    meetingId: '881 1587 7622',
+    passcode: '45164',
   },
+
+  // --- EVENT 3 ---
   {
     id: '3',
-    type: 'seminar',
-    title: 'Effective Counseling for Congregation Members',
-    slug: 'effective-counseling-for-congregation-members',
-    isNew: true,
-  },
-  {
-    id: '4',
-    type: 'blog',
-    title: 'Handling Stress in Ministry',
-    slug: 'handling-stress-in-ministry',
-  },
-  {
-    id: '5',
-    type: 'news',
-    title: 'The Total Approach to Emotional Health',
-    slug: 'total-approach-emotional-health',
+    name: 'Service Excellence in a Spiritual Renewal Ministry',
+    date: 'Friday 12th December, 2025',
+    time: '2:00 PM - 3:30 PM WAT (Nigeria) / 8:00 AM - 9:30 AM ET (USA)',
+    facilitator: 'Ginny Drews — Guest Services Team Lead, Cross Pointe Conference Centre, Centre for Spiritual Renewal, Christiansburg, VA, USA',
+    audience: 'MCR Team',
+    platform: 'Live on Zoom',
+    meetingId: '881 1587 7622',
+    passcode: '45164',
   },
 ];
+
+// ============================================================
+// END OF EVENT DATA
+// ============================================================
+
+function formatEventText(event: EventItem): string {
+  let text = `${event.name}  ·  ${event.date}  ·  ${event.time}  ·  Facilitator: ${event.facilitator}  ·  For: ${event.audience}  ·  ${event.platform}`;
+  if (event.meetingId) {
+    text += `  ·  Meeting ID: ${event.meetingId}`;
+  }
+  if (event.passcode) {
+    text += `  ·  Passcode: ${event.passcode}`;
+  }
+  return text;
+}
 
 export default function NotificationBanner() {
   const pathname = usePathname();
@@ -57,24 +96,21 @@ export default function NotificationBanner() {
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Only show on home page
   const isHomePage = pathname === '/';
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Duplicate items for seamless loop
-  const scrollingItems = [...notificationItems, ...notificationItems];
+  const scrollingItems = [...events, ...events];
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      const footerHeight = 400; // Approximate footer height
-      
-      // Hide banner when near footer
+      const footerHeight = 400;
+
       if (scrollPosition + windowHeight >= documentHeight - footerHeight) {
         setIsVisible(false);
       } else {
@@ -86,15 +122,6 @@ export default function NotificationBanner() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const getItemUrl = (item: NotificationItem) => {
-    if (item.type === 'blog') {
-      return `/blog/${item.slug}`;
-    } else if (item.type === 'news' || item.type === 'seminar') {
-      return `/news/register/${item.slug}`;
-    }
-    return '#';
-  };
-
   if (!isHomePage || !isVisible) return null;
 
   return (
@@ -104,14 +131,15 @@ export default function NotificationBanner() {
         isMounted ? 'animate-slide-up' : 'translate-y-full'
       }`}
       style={{
-        background: 'linear-gradient(135deg, rgba(40, 103, 174, 0.3) 0%, rgba(30, 77, 122, 0.4) 100%)',
+        background:
+          'linear-gradient(135deg, rgba(40, 103, 174, 0.3) 0%, rgba(30, 77, 122, 0.4) 100%)',
       }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className="w-full overflow-hidden py-3">
         <div className="flex items-center">
-          {/* Notification Icon - Fixed on left */}
+          {/* Bell Icon */}
           <div className="flex-shrink-0 px-4 sm:px-6 lg:px-8">
             <svg
               className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white"
@@ -128,34 +156,25 @@ export default function NotificationBanner() {
             </svg>
           </div>
 
-          {/* Scrolling News Ticker */}
+          {/* Scrolling Event Ticker */}
           <div className="flex-1 overflow-hidden relative">
             <div
-              className={`flex items-center space-x-8 md:space-x-12 ${
+              className={`flex items-center space-x-10 md:space-x-16 ${
                 isPaused ? 'pause-animation' : 'animate-news-ticker'
               }`}
             >
-              {scrollingItems.map((item, index) => (
-                <Link
-                  key={`${item.id}-${index}`}
-                  href={getItemUrl(item)}
-                  className="flex items-center space-x-3 md:space-x-4 flex-shrink-0 group"
-                  title={getItemUrl(item)}
+              {scrollingItems.map((event, index) => (
+                <div
+                  key={`${event.id}-${index}`}
+                  className="flex items-center space-x-3 md:space-x-4 flex-shrink-0"
                 >
-                  <div className="flex items-center space-x-3 md:space-x-4">
-                    {(item.isNew || item.isRecent) && (
-                      <span className="inline-flex items-center px-2.5 py-1 rounded text-xs md:text-sm font-bold bg-red-500 text-white animate-pulse">
-                        {item.isNew ? 'NEW' : 'RECENT'}
-                      </span>
-                    )}
-                    <span className="text-xs md:text-sm font-medium italic uppercase tracking-wider opacity-80 group-hover:opacity-100 transition-opacity text-white whitespace-nowrap">
-                      {item.type === 'blog' ? 'BLOG' : item.type === 'seminar' ? 'SEMINAR' : 'EVENT'}
-                    </span>
-                  </div>
-                  <span className="text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white group-hover:text-blue-200 group-hover:underline transition-colors duration-300 tracking-wide md:tracking-wider lg:tracking-widest whitespace-nowrap">
-                    {item.title}
+                  <span className="inline-flex items-center px-2.5 py-1 rounded text-xs md:text-sm font-bold bg-[#2867AE] text-white uppercase tracking-wider">
+                    Event
                   </span>
-                </Link>
+                  <span className="text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-white tracking-wide whitespace-nowrap">
+                    {formatEventText(event)}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
@@ -164,4 +183,3 @@ export default function NotificationBanner() {
     </div>
   );
 }
-

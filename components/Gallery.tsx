@@ -2,10 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const galleryImages = [
-  { src: '/assets/frontview.svg', alt: 'Front view of building' },
+  { src: '/assets/flowervase.jpg', alt: 'Front view of building' },
   { src: '/assets/welcomearea.svg', alt: 'Welcome area' },
   { src: '/assets/bedroom.svg', alt: 'Bedroom' },
-  { src: '/assets/goopening.svg', alt: 'Opening ceremony' },
+  { src: '/assets/gopraying.svg', alt: 'Opening ceremony' },
 ];
 
 export default function Gallery() {
