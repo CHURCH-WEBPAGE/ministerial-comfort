@@ -40,5 +40,21 @@
   .pause-animation {
     animation-play-state: paused !important;
   }
+
+  /* Event banner: duration set via --event-marquee-duration (see NotificationBanner). */
+  @keyframes event-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-event-marquee {
+    animation-name: event-marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: var(--event-marquee-duration, 120s);
+  }
 }
 
