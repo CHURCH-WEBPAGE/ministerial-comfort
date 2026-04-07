@@ -106,7 +106,7 @@ export default function Footer() {
             Walking with ministers towards restoration, renewal, and lasting impact
           </p>
           <p className="text-gray-400 text-sm">
-            © Copyright 2025 Ministerial Comfort and Renewal. All Rights Reserved
+            © Copyright 2026 Ministerial Comfort and Renewal. All Rights Reserved
           </p>
         </div>
       </div>
