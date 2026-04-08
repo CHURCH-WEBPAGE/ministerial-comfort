@@ -79,13 +79,13 @@ export default function EligibilityPage() {
                   <div>
                     <h3 className="text-lg md:text-xl font-semibold text-[#2867AE] mb-4 text-start">
                       <span className="">
-                        <span>Active or Former Ministry Involvement Within the FGCN</span>
+                        <span>Active or Retired Ministry Involvement Within the FGCN</span>
                       </span>
                     </h3>
                     <ol className="list-decimal list-inside space-y-2 text-sm md:text-base text-gray-700 leading-relaxed">
                       <li>Must be an Inducted or Licensed minister or pastor.</li>
                       <li>Must have at least two years of experience in full-time or part-time ministry.</li>
-                      <li>Former ministers who left ministry due to burnout, stress, or personal challenges may also be considered.</li>
+                      <li>Retired ministers who left ministry due to burnout, stress, or personal challenges may also be considered.</li>
                     </ol>
                   </div>
 

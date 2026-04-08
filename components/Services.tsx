@@ -3,28 +3,20 @@ import Link from 'next/link';
 
 const services = [
   {
-    title: 'Counseling and Therapy Services',
-    image: '/assets/counselorandtherapy.svg',
-  },
-  {
-    title: 'Ministerial Renewals and Sabbaticals',
-    image: '/assets/ministerialrenewal.png',
-  },
-  {
-    title: 'Ministerial Peer Support and Mentorship',
-    image: '/assets/ministerialpeer.svg',
-  },
-  {
-    title: 'Emotional Health and Leadership Development Workshops',
+    title: 'Building awareness of emotional health and mental health',
     image: '/assets/emotionalhealth.svg',
   },
   {
-    title: 'Emergency and Crisis Response Program',
+    title: 'Promoting emotionally healthy living',
+    image: '/assets/ministerialpeer.svg',
+  },
+  {
+    title: 'Counseling (multi-disciplinary)',
     image: '/assets/emergencyandcrisis.svg',
   },
   {
-    title: 'Online and Virtual Support Services',
-    image: '/assets/onlineandvirtual.svg',
+    title: 'Rest and recovery facility',
+    image: '/assets/ministerialrenewal.png',
   },
 ];
 

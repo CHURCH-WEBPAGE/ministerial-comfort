@@ -8,34 +8,28 @@ import ScrollDownArrow from '@/components/ScrollDownArrow';
 
 const services = [
   {
-    title: 'Counseling and Therapy Services',
-    image: '/assets/counselorandtherapy.svg',
-    description: 'It covers Individual Counseling; Group Therapy & Support Circles; Marriage and Family Counseling.',
-  },
-  {
-    title: 'Ministerial Renewals and Sabbaticals',
-    image: '/assets/ministerialrenewal.png',
-    description: 'MCR will advocate for Weekend Retreats; Extended Sabbaticals; and Specialized Renewal Retreats.',
-  },
-  {
-    title: 'Ministerial peer support and Mentorship',
-    image: '/assets/ministerialpeer.svg',
-    description: 'MCR will promote the following programs such as Ministerial Peer Support Groups and One-on-One Coaching / Mentoring Program.',
-  },
-  {
-    title: 'Emotional health and leadership development workshops',
+    title: 'Building awareness of emotional health and mental health',
     image: '/assets/emotionalhealth.svg',
-    description: 'The MCR mental health and leadership workshops shall balance Christian-based principles, psychological insights and practical leadership training.',
+    description:
+      'MCR helps ministers and leaders grow in understanding of emotional and mental well-being. Through teaching, resources, and conversation, we shine a light on what healthy ministry requires. A core part of this pillar is building capacity—equipping people and churches to recognise needs early and respond with wisdom and care.',
   },
   {
-    title: 'Emergency and Crisis Response Program',
+    title: 'Promoting emotionally healthy living',
+    image: '/assets/ministerialpeer.svg',
+    description:
+      'We champion rhythms and practices that support whole-person health in ministry: sustainable boundaries, connection, and habits that honour both calling and humanity. The goal is not perfection but a way of living and serving that can be maintained with integrity over the long term.',
+  },
+  {
+    title: 'Counseling (multi-disciplinary)',
     image: '/assets/emergencyandcrisis.svg',
-    description: 'To provide support to anyone in crisis that calls in for help; no one shall be turned away. However, whilst Foursquare ministers shall be routed into the MCR care program, other callers shall be routed to other appropriate agencies for attention.',
+    description:
+      'Professional counseling is offered through a multi-disciplinary lens, so care can be tailored to the minister, spouse, or family. This brings together appropriate expertise to address emotional, relational, and mental health needs in a confidential, respectful setting.',
   },
   {
-    title: 'Online and Virtual Support Services',
-    image: '/assets/onlineandvirtual.svg',
-    description: 'To expand the reach and impact of the MCR, online and virtual support services will be an integral part of the program. A mix of technology, digital tools and professional services will be applied.',
+    title: 'Rest and recovery facility',
+    image: '/assets/ministerialrenewal.png',
+    description:
+      'MCR provides a dedicated rest and recovery facility for times when ministry has taken a heavy toll. It is a place to step back, breathe, and receive structured support toward renewal—so leaders can recover strength before returning to service, or discern next steps with clarity.',
   },
 ];
 
@@ -78,7 +72,7 @@ export default function ServicesPage() {
           </div>
           
           <p className="text-lg text-gray-700 leading-relaxed max-w-4xl">
-            The Ministerial Comfort and Renewal (MCR) will provide a range of programs tailored to support ministers facing emotional, spiritual, and mental health challenges. These programs are designed to promote healing, resilience, and renewed purpose in ministry.
+            The Ministerial Comfort and Renewal (MCR) organises its work around four pillars: raising awareness and capacity for emotional and mental health, promoting emotionally healthy living, multi-disciplinary counseling, and a rest and recovery facility. Together they support ministers through education, practical life patterns, professional care, and space to heal.
           </p>
         </div>
 
