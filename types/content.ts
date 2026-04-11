@@ -48,3 +48,65 @@ export interface AboutContent {
   imageSrc: string;
   imageAlt: string;
 }
+
+export interface BlogPostManifest {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  image: string;
+  featured?: boolean;
+}
+
+export interface BlogPost extends BlogPostManifest {
+  content?: string;
+}
+
+export type NewsCategory = 'webinar' | 'training' | 'resource';
+
+export interface NewsItem {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  category: NewsCategory;
+  featured?: boolean;
+}
+
+export interface EligibilityHero {
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+}
+
+export interface EligibilitySubsection {
+  title: string;
+  intro?: string;
+  listItems?: string[];
+}
+
+export interface EligibilityTwoColumnSection {
+  type: 'twoColumn';
+  title: string;
+  left: EligibilitySubsection[];
+  right: EligibilitySubsection[];
+}
+
+export interface EligibilityNumberedListSection {
+  type: 'numberedList';
+  title: string;
+  items: string[];
+}
+
+export type EligibilitySection =
+  | EligibilityTwoColumnSection
+  | EligibilityNumberedListSection;
+
+export interface EligibilityContent {
+  hero: EligibilityHero;
+  intro: string;
+  sections: EligibilitySection[];
+}

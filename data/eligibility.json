@@ -1,0 +1,102 @@
+{
+  "hero": {
+    "imageSrc": "/assets/gopraying.svg",
+    "imageAlt": "Eligibility requirements",
+    "title": "Our Eligibility Requirements"
+  },
+  "intro": "To ensure that the Ministerial Comfort & Renewal (MCR) serves those who genuinely need support, the following eligibility criteria have been established for ministers seeking to participate in the program;",
+  "sections": [
+    {
+      "type": "twoColumn",
+      "title": "Eligibility Criteria",
+      "left": [
+        {
+          "title": "Active or Retired Ministry Involvement Within the FGCN",
+          "listItems": [
+            "Must be an Inducted or Licensed minister or pastor.",
+            "Must have at least two years of experience in full-time or part-time ministry.",
+            "Retired ministers who left ministry due to burnout, stress, or personal challenges may also be considered."
+          ]
+        },
+        {
+          "title": "Commitment to the Recovery Process",
+          "listItems": [
+            "Must be willing to engage in counseling sessions and submit to the Guided Recovery Program (GRP).",
+            "Must agree to confidentiality guidelines to maintain a safe and secure healing environment.",
+            "Must demonstrate a genuine desire for recovery, renewal, and self-care."
+          ]
+        }
+      ],
+      "right": [
+        {
+          "title": "Evidence of Need",
+          "intro": "Must demonstrate emotional, spiritual, or mental health challenges related to ministry, such as:",
+          "listItems": [
+            "Burnout and exhaustion",
+            "Anxiety, depression, or stress",
+            "Personal crises affecting ministry effectiveness",
+            "Feelings of isolation or disconnection from the church community",
+            "A self-assessment questionnaire and/or a referral from a church leader, counselor, or trusted peer may be required."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "twoColumn",
+      "title": "Specific Program Requirements",
+      "left": [
+        {
+          "title": "Counselling Services",
+          "listItems": [
+            "Ministers experiencing severe emotional distress or personal crises will be prioritized.",
+            "Participants must commit to attending a minimum of three counseling sessions with a licensed counselor or pastoral care provider.",
+            "Additional sessions may be recommended based on individual needs."
+          ]
+        },
+        {
+          "title": "Peer Support Groups",
+          "listItems": [
+            "Open to ministers seeking emotional and spiritual support from peers.",
+            "Participants must be willing to share experiences and encourage fellow ministers."
+          ]
+        }
+      ],
+      "right": [
+        {
+          "title": "Retreat and Short-term Sabbatical Program",
+          "listItems": [
+            "Ministers applying for a retreat or sabbatical must have been in active ministry for at least five years.",
+            "A letter of recommendation from a church leader, ZS or D.O.",
+            "Preference will be given to those who have not taken a sabbatical in the past five years."
+          ]
+        },
+        {
+          "title": "Workshops and Training",
+          "listItems": [
+            "Open to all ministers seeking personal development in stress management, selfcare, and mental resilience.",
+            "No prior approval needed, but registration is required for logistical planning. These sessions can be both virtual and/or physical."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "numberedList",
+      "title": "Special Considerations",
+      "items": [
+        "**Financial Assistance:** Ministers in financial hardship may apply for sponsorships or grants to cover counseling or retreat costs.",
+        "The initiative can subsequently be open to ministers from other Christian denominations.",
+        "**Confidentiality Assurance:** Personal information shared within the program will be kept strictly confidential."
+      ]
+    },
+    {
+      "type": "numberedList",
+      "title": "Application Process",
+      "items": [
+        "Complete an online or physical application form detailing ministry background and current challenges.",
+        "Undergo an initial consultation (self-assessment or referral-based). This will be followed by a medical assessment of the applicant.",
+        "Receive program placement (counseling, support groups, retreats, or training).",
+        "Commit to participation as per program guidelines."
+      ]
+    }
+  ]
+}

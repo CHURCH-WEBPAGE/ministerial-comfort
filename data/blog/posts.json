@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "slug": "proactive-emotional-health-in-ministry",
+      "title": "Proactive Emotional Health in Ministry",
+      "description": "Understanding the importance of maintaining emotional wellness before challenges arise in ministry work.",
+      "author": "Rev. Samuel Adeyemi",
+      "date": "15th Jan. 2025",
+      "image": "/assets/blog/handling-stress.svg",
+      "featured": true
+    },
+    {
+      "id": "2",
+      "slug": "handling-stress-in-ministry",
+      "title": "Handling Stress in Ministry",
+      "description": "Stress is natural in ministry. Recognizing it early and seeking guidance from mentors or counselors prevents burnout and keeps your service effective.....",
+      "author": "Pastor Grace Olamide",
+      "date": "19th Jan. 2025",
+      "image": "/assets/blog/handling-stress.svg",
+      "featured": false
+    },
+    {
+      "id": "3",
+      "slug": "balancing-proactive-and-reactive-care",
+      "title": "Balancing Proactive and Reactive Care",
+      "description": "Proactive care builds resilience; reactive care heals when challenges arise. Ministry leaders need both to serve their communities effectively....",
+      "author": "Rev. Michael Chukwu",
+      "date": "29th Jun. 2025",
+      "image": "/assets/blog/balancing-care.svg",
+      "featured": false
+    },
+    {
+      "id": "4",
+      "slug": "the-role-of-hospitality-in-emotional-wellness",
+      "title": "The Role of Hospitality in Emotional Wellness",
+      "description": "Welcoming and supporting others strengthens both the giver and receiver. Hospitality in ministry fosters emotional health for the whole community....",
+      "author": "Pastor Naomi Eze",
+      "date": "30th Sept. 2025",
+      "image": "/assets/blog/hospitality.png",
+      "featured": false
+    }
+  ]
+}

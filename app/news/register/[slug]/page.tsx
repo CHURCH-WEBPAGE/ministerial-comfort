@@ -7,98 +7,16 @@ import { toast } from 'react-toastify';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useFormStore } from '@/store/formStore';
-import { NewsItem } from '../../page';
-
-// Sample news data - replace with API call later
-const newsItems: NewsItem[] = [
-  {
-    id: '1',
-    slug: 'building-emotional-resilience-in-ministry',
-    title: 'Building Emotional Resilience in Ministry',
-    description: 'Learn practical strategies to stay emotionally strong while leading......',
-    image: '/assets/news/proactive-emotional-health.svg',
-    category: 'webinar',
-    featured: true,
-  },
-  {
-    id: '2',
-    slug: 'effective-counseling-for-congregation-members',
-    title: 'Effective Counseling for Congregation Members',
-    description: 'Explore counseling techniques for pastors and ministry leaders to support their church members emotional and spiritual well-being.',
-    image: '/assets/news/effective-counseling.svg',
-    category: 'webinar',
-  },
-  {
-    id: '3',
-    slug: 'proactive-vs-reactive-emotional-care',
-    title: 'Proactive vs. Reactive Emotional Care in Ministry',
-    description: 'Understand the balance between preventing emotional challenges and responding to them effectively in ministry settings.',
-    image: '/assets/news/care-in-ministry.svg',
-    category: 'webinar',
-  },
-  {
-    id: '4',
-    slug: 'hospitality-community-support-emotional-health',
-    title: 'Hospitality and Community Support as Emotional Health Tools',
-    description: 'Learn how practicing hospitality and serving your community can strengthen emotional wellness for both leaders and members.',
-    image: '/assets/news/hospitality-support.png',
-    category: 'webinar',
-  },
-  {
-    id: '5',
-    slug: 'total-approach-emotional-health',
-    title: 'The Total Approach to Emotional Health',
-    description: 'Balancing proactive and reactive care.',
-    image: '/assets/news/total-approach.svg',
-    category: 'training',
-  },
-  {
-    id: '6',
-    slug: 'how-to-listen-like-counselor',
-    title: 'How to Listen Like a Counselor',
-    description: 'Effective listening techniques for ministers.',
-    image: '/assets/news/how-to-listen.svg',
-    category: 'training',
-  },
-  {
-    id: '7',
-    slug: 'managing-burnout-in-ministry',
-    title: 'Managing Burnout in Ministry',
-    description: 'Early signs and recovery steps.',
-    image: '/assets/news/managin-bornout.svg',
-    category: 'training',
-  },
-  {
-    id: '8',
-    slug: 'practical-tools-emotional-spiritual-growth',
-    title: 'Practical tools for emotional and spiritual growth.',
-    description: 'Practical tools for emotional and spiritual growth.',
-    image: '/assets/news/practical tools.svg',
-    category: 'resource',
-  },
-  {
-    id: '9',
-    slug: 'simple-tools-ministers-stay-grounded',
-    title: 'Simple tools that help ministers stay grounded',
-    description: 'Simple tools that help ministers stay grounded',
-    image: '/assets/news/simpletools.svg',
-    category: 'resource',
-  },
-  {
-    id: '10',
-    slug: 'spiritual-strength-emotional-balance',
-    title: 'Spiritual strength fuels emotional balance.',
-    description: 'Spiritual strength fuels emotional balance.',
-    image: '/assets/news/spiritual-strenght.svg',
-    category: 'resource',
-  },
-];
+import { useApiResource } from '@/hooks/useApiResource';
+import type { NewsItem } from '@/types/content';
 
 export default function RegisterPage() {
   const router = useRouter();
   const params = useParams();
-  const slug = params?.slug as string;
-  const event = newsItems.find(item => item.slug === slug);
+  const slug = typeof params?.slug === 'string' ? params.slug : '';
+  const { data: event, loading, error } = useApiResource<NewsItem>(
+    slug ? `/api/news/${encodeURIComponent(slug)}` : null
+  );
   const { registrationForm, setRegistrationForm, clearRegistrationForm } = useFormStore();
 
   // Load form data from store and set event slug
@@ -159,7 +77,19 @@ export default function RegisterPage() {
     router.back();
   };
 
-  if (!event) {
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-white">
+        <Header />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <p className="text-center text-gray-500 text-sm">Loading…</p>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+
+  if (error || !event) {
     return (
       <main className="min-h-screen bg-white">
         <Header />

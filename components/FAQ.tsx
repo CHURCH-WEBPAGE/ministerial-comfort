@@ -1,10 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import faqsData from '@/data/faq.json';
+import { useApiResource } from '@/hooks/useApiResource';
 import type { FAQItem } from '@/types/content';
-
-const faqs = faqsData as FAQItem[];
 
 interface FAQItemProps {
   question: string;
@@ -47,6 +45,8 @@ function FAQItem({ question, answer }: FAQItemProps) {
 }
 
 export default function FAQ() {
+  const { data: faqs, loading, error } = useApiResource<FAQItem[]>('/api/faq');
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,9 +54,17 @@ export default function FAQ() {
           Frequently asked questions
         </h2>
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, index) => (
-            <FAQItem key={index} question={faq.question} answer={faq.answer} />
-          ))}
+          {loading ? (
+            <p className="text-center text-gray-500 text-sm">Loading questions…</p>
+          ) : error || !faqs?.length ? (
+            <p className="text-center text-gray-500 text-sm">
+              {error ? 'Unable to load FAQ.' : 'No questions yet.'}
+            </p>
+          ) : (
+            faqs.map((faq, index) => (
+              <FAQItem key={index} question={faq.question} answer={faq.answer} />
+            ))
+          )}
         </div>
       </div>
     </section>

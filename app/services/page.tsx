@@ -5,13 +5,15 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollDownArrow from '@/components/ScrollDownArrow';
-import servicesContent from '@/data/services.json';
+import { useApiResource } from '@/hooks/useApiResource';
 import type { ServicesContent } from '@/types/content';
-
-const { pageIntro, items: services } = servicesContent as ServicesContent;
 
 export default function ServicesPage() {
   const router = useRouter();
+  const { data: servicesContent, loading, error } =
+    useApiResource<ServicesContent>('/api/services');
+  const pageIntro = servicesContent?.pageIntro ?? '';
+  const services = servicesContent?.items ?? [];
 
   const handleBack = () => {
     router.back();
@@ -49,36 +51,45 @@ export default function ServicesPage() {
           </div>
           
           <p className="text-lg text-gray-700 leading-relaxed max-w-4xl">
-            {pageIntro}
+            {loading ? 'Loading…' : error ? 'Unable to load intro.' : pageIntro}
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-white text-lg md:text-xl font-semibold leading-tight">
-                    {service.title}
-                  </h3>
+          {loading ? (
+            <p className="text-gray-500 col-span-full text-sm">Loading services…</p>
+          ) : error || !services.length ? (
+            <p className="text-gray-500 col-span-full text-sm">
+              {error ? 'Unable to load services.' : 'No services available.'}
+            </p>
+          ) : (
+            services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-lg md:text-xl font-semibold leading-tight">
+                      {service.title}
+                    </h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-700 leading-relaxed">{service.description}</p>
                 </div>
               </div>
-              <div className="p-6">
-                <p className="text-gray-700 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
       <Footer />

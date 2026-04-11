@@ -9,12 +9,10 @@ import {
   type ReactNode,
 } from 'react';
 import { usePathname } from 'next/navigation';
-import eventsData from '@/data/events.json';
+import { useApiResource } from '@/hooks/useApiResource';
 import type { EventItem, EventLabelTone } from '@/types/content';
 
-/** Edit `data/events.json` to add, remove, or change banner events. */
-
-const events = eventsData as EventItem[];
+/** Event copy lives in `data/events.json` and is served by `GET /api/events`. */
 
 const LABEL_TONE_CLASSES: Record<EventLabelTone, string> = {
   green: 'bg-emerald-600 border-emerald-400/90 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]',
@@ -79,14 +77,16 @@ function buildEventStrip(eventList: EventItem[]): ReactNode[] {
 
 export default function NotificationBanner() {
   const pathname = usePathname();
+  const isHomePage = pathname === '/';
+  const { data: events, loading, error } = useApiResource<EventItem[]>(
+    isHomePage ? '/api/events' : null
+  );
   const [isVisible, setIsVisible] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const marqueeTrackRef = useRef<HTMLDivElement>(null);
   const [marqueeDurationSec, setMarqueeDurationSec] = useState(120);
-
-  const isHomePage = pathname === '/';
 
   useEffect(() => {
     setIsMounted(true);
@@ -126,9 +126,10 @@ export default function NotificationBanner() {
     const ro = new ResizeObserver(updateDuration);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [isHomePage, isVisible]);
+  }, [isHomePage, isVisible, events]);
 
   if (!isHomePage || !isVisible) return null;
+  if (loading || error || !events?.length) return null;
 
   const strip = buildEventStrip(events);
 
