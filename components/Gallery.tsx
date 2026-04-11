@@ -1,12 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import galleryContent from '@/data/gallery.json';
+import type { GalleryContent } from '@/types/content';
 
-const galleryImages = [
-  { src: '/assets/flowervase.jpg', alt: 'Front view of building' },
-  { src: '/assets/welcomearea.svg', alt: 'Welcome area' },
-  { src: '/assets/bedroom.svg', alt: 'Bedroom' },
-  { src: '/assets/gopraying.svg', alt: 'Opening ceremony' },
-];
+const galleryImages = (galleryContent as GalleryContent).homepage;
 
 export default function Gallery() {
   return (

@@ -9,42 +9,12 @@ import {
   type ReactNode,
 } from 'react';
 import { usePathname } from 'next/navigation';
+import eventsData from '@/data/events.json';
+import type { EventItem, EventLabelTone } from '@/types/content';
 
-// ============================================================
-// EVENT DATA - UPDATE THIS SECTION TO CHANGE BANNER CONTENT
-// ============================================================
-// Each event has the following fields:
-//   name     - The title/topic of the event
-//   date     - The date of the event (e.g. "Friday 21st November, 2025")
-//   time     - Time with timezone info
-//   facilitator - Name and title of the facilitator
-//   audience - Who the event is for
-//   platform - Where the event is held (e.g. "Zoom")
-//   meetingId - Zoom meeting ID (optional)
-//   passcode  - Zoom passcode (optional)
-//   labelTone - Color of the title label so each event is easy to spot:
-//               'green' | 'red' | 'amber' | 'blue' | 'violet' | 'rose'
-//
-// To add a new event:  Copy one of the objects below and fill in the details.
-// To remove an event:  Delete the entire { ... } block for that event.
-// To edit an event:    Change the relevant field values below.
-// ============================================================
+/** Edit `data/events.json` to add, remove, or change banner events. */
 
-type EventLabelTone = 'green' | 'red' | 'amber' | 'blue' | 'violet' | 'rose';
-
-interface EventItem {
-  id: string;
-  name: string;
-  date: string;
-  time: string;
-  facilitator: string;
-  audience: string;
-  platform: string;
-  meetingId?: string;
-  passcode?: string;
-  /** Background color for the event title label (each event can differ). */
-  labelTone: EventLabelTone;
-}
+const events = eventsData as EventItem[];
 
 const LABEL_TONE_CLASSES: Record<EventLabelTone, string> = {
   green: 'bg-emerald-600 border-emerald-400/90 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]',
@@ -54,54 +24,6 @@ const LABEL_TONE_CLASSES: Record<EventLabelTone, string> = {
   violet: 'bg-violet-600 border-violet-400/90 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]',
   rose: 'bg-rose-600 border-rose-400/90 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]',
 };
-
-const events: EventItem[] = [
-  // --- EVENT 1 ---
-  {
-    id: '1',
-    name: 'The Emotional Health of the Leader',
-    labelTone: 'green',
-    date: 'Thursday 30th October, 2025',
-    time: '2:00 PM - 3:30 PM WAT (Nigeria) / 9:00 AM - 10:30 AM ET (USA)',
-    facilitator: 'Rev. Paul Kuzma — Director, Centre for Spiritual Renewal, Christiansburg, VA, USA',
-    audience: 'National Board of Directors of the Foursquare Gospel Church in Nigeria',
-    platform: 'Live on Zoom',
-    meetingId: '881 1587 7622',
-    passcode: '45164',
-  },
-
-  // --- EVENT 2 ---
-  {
-    id: '2',
-    name: 'Spiritual Renewal and Emotionally Healthy Discipleship',
-    labelTone: 'red',
-    date: 'Friday 21st November, 2025',
-    time: '2:00 PM - 3:30 PM WAT (Nigeria) / 8:00 AM - 9:30 AM ET (USA)',
-    facilitator: 'Rev. Paul Kuzma — Director, Centre for Spiritual Renewal, Christiansburg, VA, USA',
-    audience: 'National Executive Council of the Foursquare Gospel Church in Nigeria and invited ministers',
-    platform: 'Live on Zoom',
-    meetingId: '881 1587 7622',
-    passcode: '45164',
-  },
-
-  // --- EVENT 3 ---
-  {
-    id: '3',
-    name: 'Service Excellence in a Spiritual Renewal Ministry',
-    labelTone: 'amber',
-    date: 'Friday 12th December, 2025',
-    time: '2:00 PM - 3:30 PM WAT (Nigeria) / 8:00 AM - 9:30 AM ET (USA)',
-    facilitator: 'Ginny Drews — Guest Services Team Lead, Cross Pointe Conference Centre, Centre for Spiritual Renewal, Christiansburg, VA, USA',
-    audience: 'MCR Team',
-    platform: 'Live on Zoom',
-    meetingId: '881 1587 7622',
-    passcode: '45164',
-  },
-];
-
-// ============================================================
-// END OF EVENT DATA
-// ============================================================
 
 /**
  * Higher = faster scroll (pixels moved per second along the track).
@@ -130,8 +52,6 @@ function buildEventStrip(eventList: EventItem[]): ReactNode[] {
       `Facilitator: ${event.facilitator}`,
       `For: ${event.audience}`,
       event.platform,
-      event.meetingId ? `Meeting ID: ${event.meetingId}` : '',
-      event.passcode ? `Passcode: ${event.passcode}` : '',
     ]
       .filter(Boolean)
       .join('  ·  ');

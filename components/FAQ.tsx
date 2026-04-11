@@ -1,6 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import faqsData from '@/data/faq.json';
+import type { FAQItem } from '@/types/content';
+
+const faqs = faqsData as FAQItem[];
 
 interface FAQItemProps {
   question: string;
@@ -41,24 +45,6 @@ function FAQItem({ question, answer }: FAQItemProps) {
     </div>
   );
 }
-
-const faqs = [
-  {
-    question: 'What is MCR all about?',
-    answer:
-      'The Ministerial Comfort and Renewal (MCR) exists to restore hope, healing, and transformation to ministers in distress. We provide support, guidance, and renewal services to ensure that no servant of God walks alone in their season of struggle.',
-  },
-  {
-    question: 'How can I register?',
-    answer:
-      'You can register by clicking the "Get Started" button in the header or the "Get Support" button in the hero section. You can also contact us directly through our contact form or by phone.',
-  },
-  {
-    question: 'What benefits come with this initiative?',
-    answer:
-      'MCR offers various programs including counseling and therapy services, ministerial renewals and sabbaticals, peer support and mentorship, emotional health workshops, emergency crisis response, and online virtual support services.',
-  },
-];
 
 export default function FAQ() {
   return (

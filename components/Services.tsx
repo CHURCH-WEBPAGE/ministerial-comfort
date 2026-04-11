@@ -1,24 +1,9 @@
 import ServiceCard from './ServiceCard';
 import Link from 'next/link';
+import servicesContent from '@/data/services.json';
+import type { ServicesContent } from '@/types/content';
 
-const services = [
-  {
-    title: 'Building awareness of emotional health and mental health',
-    image: '/assets/emotionalhealth.svg',
-  },
-  {
-    title: 'Promoting emotionally healthy living',
-    image: '/assets/ministerialpeer.svg',
-  },
-  {
-    title: 'Counseling (multi-disciplinary)',
-    image: '/assets/emergencyandcrisis.svg',
-  },
-  {
-    title: 'Rest and recovery facility',
-    image: '/assets/ministerialrenewal.png',
-  },
-];
+const { items: services } = servicesContent as ServicesContent;
 
 export default function Services() {
   return (

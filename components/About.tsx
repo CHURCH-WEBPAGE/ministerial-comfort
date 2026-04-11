@@ -1,4 +1,8 @@
 import Image from 'next/image';
+import aboutContent from '@/data/about.json';
+import type { AboutContent } from '@/types/content';
+
+const about = aboutContent as AboutContent;
 
 export default function About() {
   return (
@@ -8,13 +12,13 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-lg text-gray-700 leading-relaxed text-center md:text-left">
-              The Ministerial Comfort and Renewal (MCR) exists to restore hope, healing, and transformation to ministers in distress regardless of the cause. Our mission is to stand with ministers who urgently need encouragement, guidance, and renewal, ensuring that no servant of God walks alone in their season of struggle.
+              {about.body}
             </p>
           </div>
           <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="/assets/aboutimg.svg"
-              alt="About MCR - Hands on Bible"
+              src={about.imageSrc}
+              alt={about.imageAlt}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"

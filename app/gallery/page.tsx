@@ -5,21 +5,10 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollDownArrow from '@/components/ScrollDownArrow';
+import galleryContent from '@/data/gallery.json';
+import type { GalleryContent } from '@/types/content';
 
-const galleryImages = [
-  { src: '/assets/goopening.svg', alt: 'Opening ceremony' },
-  { src: '/assets/2Z3A1524.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1526.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1527.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1534.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1548.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1557.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1566.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1573.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1623.jpg', alt: 'Gallery image' },
-  { src: '/assets/2Z3A1668.jpg', alt: 'Gallery image' },
-  { src: '/assets/frontview.svg', alt: 'Front view of building' },
-];
+const galleryImages = (galleryContent as GalleryContent).page;
 
 export default function GalleryPage() {
   const router = useRouter();

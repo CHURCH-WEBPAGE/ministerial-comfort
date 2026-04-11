@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "The Emotional Health of the Leader",
+    "labelTone": "green",
+    "date": "Thursday 30th October, 2025",
+    "time": "2:00 PM - 3:30 PM WAT (Nigeria) / 9:00 AM - 10:30 AM ET (USA)",
+    "facilitator": "Rev. Paul Kuzma — Director, Centre for Spiritual Renewal, Christiansburg, VA, USA",
+    "audience": "National Board of Directors of the Foursquare Gospel Church in Nigeria",
+    "platform": "Live on Zoom"
+  },
+  {
+    "id": "2",
+    "name": "Spiritual Renewal and Emotionally Healthy Discipleship",
+    "labelTone": "red",
+    "date": "Friday 21st November, 2025",
+    "time": "2:00 PM - 3:30 PM WAT (Nigeria) / 8:00 AM - 9:30 AM ET (USA)",
+    "facilitator": "Rev. Paul Kuzma — Director, Centre for Spiritual Renewal, Christiansburg, VA, USA",
+    "audience": "National Executive Council of the Foursquare Gospel Church in Nigeria and invited ministers",
+    "platform": "Live on Zoom"
+  },
+  {
+    "id": "3",
+    "name": "Service Excellence in a Spiritual Renewal Ministry",
+    "labelTone": "amber",
+    "date": "Friday 12th December, 2025",
+    "time": "2:00 PM - 3:30 PM WAT (Nigeria) / 8:00 AM - 9:30 AM ET (USA)",
+    "facilitator": "Ginny Drews — Guest Services Team Lead, Cross Pointe Conference Centre, Centre for Spiritual Renewal, Christiansburg, VA, USA",
+    "audience": "MCR Team",
+    "platform": "Live on Zoom"
+  }
+]
