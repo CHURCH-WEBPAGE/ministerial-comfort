@@ -18,14 +18,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 left-0 right-0 z-50 bg-white shadow-md">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center" onClick={closeMenu}>
+        <div className="flex items-center justify-between min-h-[5.25rem] py-2 md:min-h-[5.75rem]">
+          <Link href="/" className="flex shrink-0 items-center" onClick={closeMenu}>
             <Image
               src="/assets/MCR logo 2.svg"
               alt="MCR Logo"
-              width={50}
-              height={50}
-              className="w-12 h-12"
+              width={280}
+              height={100}
+              className="h-[3.25rem] w-auto sm:h-[3.75rem] md:h-[4.25rem]"
+              sizes="(max-width: 768px) 200px, 280px"
               priority
             />
           </Link>
