@@ -92,7 +92,7 @@ export default function BlogPage() {
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">All blogs</h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">
-              Blog posts from the MCR webinar series for the Foursquare Gospel Church in Nigeria (FGCN).
+              Blog posts from the MCR webinar series.
             </p>
           </div>
         </div>

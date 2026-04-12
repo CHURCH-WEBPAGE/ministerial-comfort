@@ -9,7 +9,8 @@
       "category": "webinar",
       "featured": true,
       "registrationOpen": true,
-      "eventDate": "2025-10-30"
+      "eventDate": "2025-10-30",
+      "snapshotPdf": "mcr emotional health webinar 30-10-2025.pdf"
     },
     {
       "id": "2",
@@ -19,7 +20,8 @@
       "image": "/assets/blog/mcr-webinar-2025-11-21.jpg",
       "category": "webinar",
       "registrationOpen": true,
-      "eventDate": "2025-11-21"
+      "eventDate": "2025-11-21",
+      "snapshotPdf": "mrc spiritual renewal webinar .21-11-2025.pdf"
     },
     {
       "id": "3",
@@ -29,7 +31,8 @@
       "image": "/assets/blog/mcr-webinar-2025-12-12.png",
       "category": "webinar",
       "registrationOpen": true,
-      "eventDate": "2025-12-12"
+      "eventDate": "2025-12-12",
+      "snapshotPdf": "mcr service excellence webinar 12-12-2025.pdf"
     }
   ]
 }

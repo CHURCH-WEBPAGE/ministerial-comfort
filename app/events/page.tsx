@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import ScrollDownArrow from '@/components/ScrollDownArrow';
 import PageLoader from '@/components/PageLoader';
 import { isEventRegistrationAvailable } from '@/lib/eventRegistration';
+import { getEventSnapshotHref } from '@/lib/eventSnapshot';
 import { useApiResource } from '@/hooks/useApiResource';
 import type { NewsItem } from '@/types/content';
 
@@ -87,7 +88,7 @@ export default function EventsPage() {
                 <p className="pointer-events-none mt-3 line-clamp-2 text-sm text-white/85 sm:text-base md:line-clamp-3">
                   {featuredItem.description}
                 </p>
-                <div className="pointer-events-auto mt-6 flex flex-wrap gap-3">
+                <div className="pointer-events-auto mt-6 flex w-full flex-wrap items-center gap-3">
                   {featuredOpen ? (
                     <Link
                       href={`/events/register/${featuredItem.slug}`}
@@ -96,9 +97,19 @@ export default function EventsPage() {
                       Register
                     </Link>
                   ) : (
-                    <span className="inline-flex items-center rounded-full bg-white/15 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur-sm">
-                      Closed
-                    </span>
+                    <>
+                      <span className="inline-flex items-center rounded-md border border-white/20 bg-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/85 shadow-sm backdrop-blur-sm">
+                        Closed
+                      </span>
+                      <a
+                        href={getEventSnapshotHref(featuredItem.slug)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-auto inline-flex items-center gap-2 rounded-full border border-white/45 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+                      >
+                        Download event snapshot
+                      </a>
+                    </>
                   )}
                 </div>
               </div>
@@ -135,7 +146,7 @@ export default function EventsPage() {
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
                     <h3 className="text-lg font-semibold leading-snug text-slate-900">{item.title}</h3>
                     <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-4 flex w-full flex-wrap items-center gap-2">
                       {open ? (
                         <Link
                           href={`/events/register/${item.slug}`}
@@ -144,9 +155,19 @@ export default function EventsPage() {
                           Register
                         </Link>
                       ) : (
-                        <span className="inline-flex rounded-full bg-slate-200 px-4 py-2 text-xs font-semibold text-slate-600 sm:text-sm">
-                          Closed
-                        </span>
+                        <>
+                          <span className="inline-flex items-center rounded-md border border-slate-200/90 bg-slate-100/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-600 shadow-sm sm:text-xs">
+                            Closed
+                          </span>
+                          <a
+                            href={getEventSnapshotHref(item.slug)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="ml-auto inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-[#2867AE]/50 hover:bg-slate-50 sm:text-sm"
+                          >
+                            Download event snapshot
+                          </a>
+                        </>
                       )}
                     </div>
                   </div>
@@ -183,7 +204,7 @@ export default function EventsPage() {
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
                     <h3 className="text-lg font-semibold leading-snug text-slate-900">{item.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-4 flex w-full flex-wrap items-center gap-2">
                       {open ? (
                         <Link
                           href={`/events/register/${item.slug}`}
@@ -192,9 +213,19 @@ export default function EventsPage() {
                           Register
                         </Link>
                       ) : (
-                        <span className="inline-flex rounded-full bg-slate-200 px-4 py-2 text-xs font-semibold text-slate-600 sm:text-sm">
-                          Closed
-                        </span>
+                        <>
+                          <span className="inline-flex items-center rounded-md border border-slate-200/90 bg-slate-100/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-600 shadow-sm sm:text-xs">
+                            Closed
+                          </span>
+                          <a
+                            href={getEventSnapshotHref(item.slug)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="ml-auto inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-[#2867AE]/50 hover:bg-slate-50 sm:text-sm"
+                          >
+                            Download event snapshot
+                          </a>
+                        </>
                       )}
                     </div>
                   </div>

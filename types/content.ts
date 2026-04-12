@@ -81,6 +81,8 @@ export interface NewsItem {
   registrationOpen?: boolean;
   /** Event day YYYY-MM-DD (local). Used with today to show Register vs Closed. */
   eventDate?: string;
+  /** PDF filename in data/pdf/ (any readable name). If omitted, `{slug}.pdf` is tried. */
+  snapshotPdf?: string;
 }
 
 export interface EligibilityHero {
