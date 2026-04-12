@@ -1,9 +1,14 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import ServiceCard from './ServiceCard';
 import Link from 'next/link';
+import PageLoader from '@/components/PageLoader';
+import SectionReveal from '@/components/SectionReveal';
 import { useApiResource } from '@/hooks/useApiResource';
 import type { ServicesContent } from '@/types/content';
+
+const cardStagger = 0.08;
 
 export default function Services() {
   const { data: servicesContent, loading, error } =
@@ -12,22 +17,42 @@ export default function Services() {
   const services = servicesContent?.items ?? [];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="bg-gradient-to-b from-slate-50 to-white py-20 md:py-24 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-600">Our Programs & Services</h2>
-          <Link href="/services" className="text-red-600 hover:text-red-700 font-semibold text-base">
+        <SectionReveal className="mb-12 flex flex-col gap-5 sm:mb-14 sm:flex-row sm:items-end sm:justify-between md:mb-16">
+          <div className="max-w-2xl space-y-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#2867AE]">What we offer</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
+              Our programs &amp; services
+            </h2>
+            <p className="text-lg text-slate-600 md:text-xl">
+              Practical pathways toward healing, rest, and renewed strength in ministry.
+            </p>
+          </div>
+          <Link
+            href="/services"
+            className="inline-flex shrink-0 items-center gap-2 text-base font-semibold text-[#2867AE] transition hover:gap-3"
+          >
             View all
+            <span aria-hidden>→</span>
           </Link>
-        </div>
+        </SectionReveal>
         {loading ? (
-          <p className="text-gray-500 text-sm">Loading services…</p>
+          <PageLoader fillViewport={false} />
         ) : error || !services.length ? (
-          <p className="text-gray-500 text-sm">{error ? 'Unable to load services.' : 'No services listed.'}</p>
+          <p className="text-sm text-slate-500">{error ? 'Unable to load services.' : 'No services listed.'}</p>
         ) : (
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:gap-10">
             {services.slice(0, 4).map((service, index) => (
-              <ServiceCard key={service.title + index} title={service.title} image={service.image} />
+              <motion.div
+                key={service.title + index}
+                initial={{ opacity: 0, y: 36 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.55, delay: index * cardStagger, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <ServiceCard title={service.title} image={service.image} />
+              </motion.div>
             ))}
           </div>
         )}
