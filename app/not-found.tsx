@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="container mx-auto px-4 py-20 sm:px-6 md:py-24 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-6xl md:text-7xl font-bold text-[#2867AE] mb-4">404</h1>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
