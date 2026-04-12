@@ -19,20 +19,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="scroll-smooth">
+      <body className="min-h-screen bg-white antialiased">
         {children}
         <ToastContainer
           position="top-right"
-          autoClose={3000}
+          autoClose={4000}
           hideProgressBar={false}
-          newestOnTop={false}
+          newestOnTop
           closeOnClick
           rtl={false}
           pauseOnFocusLoss
           draggable
           pauseOnHover
           theme="light"
+          limit={5}
+          toastClassName="rounded-lg shadow-md"
+          style={{ zIndex: 99999 }}
         />
       </body>
     </html>
