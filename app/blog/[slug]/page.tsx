@@ -119,7 +119,24 @@ export default function BlogDetailPage() {
           <div
             className="prose prose-slate max-w-none prose-headings:scroll-mt-24 prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:text-lg prose-p:leading-relaxed prose-p:text-slate-700 prose-li:text-slate-700 prose-strong:text-slate-900 prose-a:text-[#2867AE] prose-a:no-underline hover:prose-a:underline prose-hr:border-slate-200"
           >
-            <ReactMarkdown>{post.content || post.description}</ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                a: ({ node: _n, href, children, ...props }) => {
+                  const isMailto = typeof href === 'string' && href.toLowerCase().startsWith('mailto:');
+                  return (
+                    <a
+                      href={href}
+                      {...props}
+                      {...(isMailto ? { target: '_blank', rel: 'noopener noreferrer' as const } : {})}
+                    >
+                      {children}
+                    </a>
+                  );
+                },
+              }}
+            >
+              {post.content || post.description}
+            </ReactMarkdown>
           </div>
         </div>
       </article>

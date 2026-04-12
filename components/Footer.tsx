@@ -25,6 +25,8 @@ export default function Footer() {
             <div className="flex flex-wrap gap-3">
               <a
                 href={`mailto:${SUPPORT_EMAIL}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-full border border-white/25 text-white hover:bg-white/10 transition-colors"
                 aria-label={`Email ${SUPPORT_EMAIL}`}
               >
@@ -131,7 +133,12 @@ export default function Footer() {
                 <svg className="w-5 h-5 mt-0.5 shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href={`mailto:${SUPPORT_EMAIL}`} className="text-white hover:underline break-all">
+                <a
+                  href={`mailto:${SUPPORT_EMAIL}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline break-all"
+                >
                   {SUPPORT_EMAIL}
                 </a>
               </li>

@@ -163,6 +163,8 @@ export default function Contact() {
               <p className="text-white/90 text-sm md:text-base mb-2">Prefer email? Reach us directly at</p>
               <a
                 href={`mailto:${SUPPORT_EMAIL}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-lg md:text-xl font-semibold text-white hover:text-blue-200 transition-colors break-all"
               >
                 {SUPPORT_EMAIL}
