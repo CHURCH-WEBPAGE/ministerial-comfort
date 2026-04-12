@@ -37,7 +37,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: DEFAULT_OG_IMAGE_PATH,
-        alt: `${SITE_NAME} logo`,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — share preview`,
       },
     ],
   },

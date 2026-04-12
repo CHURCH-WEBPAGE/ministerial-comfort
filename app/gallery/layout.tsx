@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: `Gallery | ${SITE_NAME}`,
-    description: `MCR gallery — moments of care, worship, and community.`,
+    description: `MCR gallery moments of care, worship, and community.`,
   },
 };
 

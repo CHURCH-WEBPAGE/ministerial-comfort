@@ -15,11 +15,10 @@ export function getMetadataBase(): URL {
 export const SITE_NAME = 'Ministerial Comfort and Renewal (MCR)';
 
 export const SITE_DESCRIPTION =
-  'Restoring hope and renewal for ministers—support, counseling, and resources through the Foursquare Gospel Church in Nigeria (MCR).';
+  'Restoring hope and renewal for ministers support, counseling, and resources through the Foursquare Gospel Church in Nigeria (MCR).';
 
 /**
- * Default link-preview image (WhatsApp, Facebook, X). Use a small PNG/JPEG—very large
- * hero files are often skipped by crawlers. Set NEXT_PUBLIC_SITE_URL in production so
- * og:image resolves to an absolute https URL.
+ * Default link-preview image: `public/assets/og-share.jpg` (1200×630, logo centered on brand blue).
+ * Regenerate after logo changes: `npm run build:og-share` (requires devDependency `jimp`).
  */
-export const DEFAULT_OG_IMAGE_PATH = '/assets/logo-whitebg.png';
+export const DEFAULT_OG_IMAGE_PATH = '/assets/og-share.jpg';
