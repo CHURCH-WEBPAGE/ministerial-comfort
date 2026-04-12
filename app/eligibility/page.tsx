@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollDownArrow from '@/components/ScrollDownArrow';
 import EligibilityDocument from '@/components/EligibilityDocument';
+import PageLoader from '@/components/PageLoader';
 import { useApiResource } from '@/hooks/useApiResource';
 import type { EligibilityContent } from '@/types/content';
 
@@ -17,14 +18,23 @@ export default function EligibilityPage() {
     router.back();
   };
 
-  if (loading || error || !data) {
+  if (loading) {
+    return (
+      <main className="flex min-h-screen flex-col bg-white">
+        <Header />
+        <PageLoader />
+        <Footer />
+        <ScrollDownArrow />
+      </main>
+    );
+  }
+
+  if (error || !data) {
     return (
       <main className="min-h-screen bg-white">
         <Header />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <p className="text-center text-gray-500 text-sm">
-            {loading ? 'Loading eligibility information…' : 'Unable to load this page.'}
-          </p>
+        <div className="container mx-auto px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+          <p className="text-center text-gray-600 text-sm">Unable to load this page. Please try again later.</p>
         </div>
         <Footer />
         <ScrollDownArrow />
@@ -79,7 +89,7 @@ export default function EligibilityPage() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div className="container mx-auto px-4 pb-20 sm:px-6 md:pb-24 lg:px-8 lg:pb-28">
         <EligibilityDocument content={{ hero, intro, sections }} />
       </div>
 

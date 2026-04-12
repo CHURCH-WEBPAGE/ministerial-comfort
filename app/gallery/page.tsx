@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollDownArrow from '@/components/ScrollDownArrow';
+import PageLoader from '@/components/PageLoader';
 import { useApiResource } from '@/hooks/useApiResource';
 import type { GalleryContent } from '@/types/content';
 
@@ -21,8 +22,8 @@ export default function GalleryPage() {
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="mb-12">
+      <div className="container mx-auto px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+        <div className="mb-12 md:mb-14">
           <div className="flex items-center mb-6">
             <button
               onClick={handleBack}
@@ -49,7 +50,7 @@ export default function GalleryPage() {
         </div>
 
         {loading ? (
-          <p className="text-gray-500 text-sm">Loading gallery…</p>
+          <PageLoader fillViewport={false} />
         ) : error || !galleryImages.length ? (
           <p className="text-gray-500 text-sm">{error ? 'Unable to load gallery.' : 'No images.'}</p>
         ) : (

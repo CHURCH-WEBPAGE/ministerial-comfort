@@ -5,20 +5,22 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollDownArrow from '@/components/ScrollDownArrow';
+import PageLoader from '@/components/PageLoader';
 import { useApiResource } from '@/hooks/useApiResource';
 import type { BlogPostManifest } from '@/types/content';
 
 export default function BlogPage() {
   const { data, loading, error } = useApiResource<{ posts: BlogPostManifest[] }>('/api/blog');
-  const blogPosts = data?.posts ?? [];
-  const featuredPost = blogPosts.find((post) => post.featured) || blogPosts[0];
-  const recentPosts = blogPosts.filter((post) => !post.featured).slice(0, 3);
+  const posts = data?.posts ?? [];
+  const webinarPosts = posts.filter((p) => !p.category || p.category === 'webinar');
+  const featuredPost = webinarPosts.find((post) => post.featured) || webinarPosts[0];
+  const gridWebinars = webinarPosts;
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-white">
+      <main className="flex min-h-screen flex-col bg-slate-50">
         <Header />
-        <p className="container mx-auto px-4 py-20 text-gray-500 text-sm">Loading blog…</p>
+        <PageLoader />
         <Footer />
       </main>
     );
@@ -26,10 +28,10 @@ export default function BlogPage() {
 
   if (error || !featuredPost) {
     return (
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-slate-50">
         <Header />
-        <p className="container mx-auto px-4 py-20 text-gray-500 text-sm text-center">
-          {error ? 'Unable to load blog posts.' : 'No posts yet.'}
+        <p className="container mx-auto px-4 py-16 text-center text-slate-600 text-sm">
+          {error ? 'Unable to load blog posts.' : 'No blog posts yet.'}
         </p>
         <Footer />
       </main>
@@ -37,94 +39,111 @@ export default function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-50 text-slate-900">
       <Header />
 
-      <section className="relative h-[500px] md:h-[600px] mb-12">
-        <Image
-          src={featuredPost.image}
-          alt={featuredPost.title}
-          fill
-          className="object-cover"
-          style={{ objectPosition: 'center' }}
-          sizes="100vw"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
+      <div className="relative mx-auto max-w-7xl px-4 pb-6 pt-8 sm:px-6 md:pt-12 lg:px-8">
+        <nav className="text-xs font-medium uppercase tracking-wider text-slate-500">
+          <Link href="/" className="hover:text-[#2867AE] transition-colors">
+            Home
+          </Link>
+          <span className="mx-2 text-slate-300">/</span>
+          <span className="text-[#2867AE]">Blog</span>
+        </nav>
+      </div>
 
-        <div className="relative z-10 h-full flex items-end">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-            <div className="max-w-3xl">
-              <p className="text-white/80 text-sm md:text-base mb-2">Featured</p>
-              <Link href={`/blog/${featuredPost.slug}`}>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 hover:text-blue-300 transition-colors">
+      <section className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="overflow-hidden rounded-3xl bg-slate-900 shadow-2xl ring-1 ring-slate-900/10">
+          <div className="relative aspect-[21/9] min-h-[280px] md:min-h-[360px]">
+            <Image
+              src={featuredPost.image}
+              alt={featuredPost.title}
+              fill
+              className="object-cover"
+              style={{ objectPosition: 'center' }}
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+            <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 lg:p-12">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Featured</p>
+              <Link href={`/blog/${featuredPost.slug}`} className="group max-w-3xl">
+                <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl group-hover:text-blue-100 transition-colors">
                   {featuredPost.title}
                 </h1>
               </Link>
-              <p className="text-white/90 text-base md:text-lg">Author: {featuredPost.author}</p>
-            </div>
-          </div>
-
-          <div className="absolute right-8 bottom-12 z-20">
-            <button className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center transition-colors">
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <p className="mt-3 text-sm text-white/80 sm:text-base">{featuredPost.author}</p>
+              <Link
+                href={`/blog/${featuredPost.slug}`}
+                className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:bg-slate-100"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+                Read blog post
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-0">
-            Recent Blog Posts & News Highlights
-          </h2>
-          <button className="bg-[#2867AE] hover:bg-[#1e4d7a] text-white px-6 py-2.5 rounded-lg transition-colors font-semibold shadow-md w-fit">
-            Create a blog post
-          </button>
+      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 md:pb-24 lg:px-8">
+        <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between md:mb-14">
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">All blogs</h2>
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">
+              Blog posts from the MCR webinar series for the Foursquare Gospel Church in Nigeria (FGCN).
+            </p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {recentPosts.map((post) => (
-            <Link
-              key={post.id}
-              href={`/blog/${post.slug}`}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#2867AE] transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">{post.description}</p>
-                <p className="text-gray-500 text-xs">
-                  {post.author} {post.date}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="flex justify-center">
-          <button className="bg-[#2867AE] hover:bg-[#1e4d7a] text-white px-8 py-3 rounded-lg transition-colors font-semibold shadow-md">
-            Load More
-          </button>
-        </div>
+        {gridWebinars.length === 0 ? (
+          <p className="text-sm text-slate-500">No blog posts yet.</p>
+        ) : (
+          <div
+            className={`grid gap-6 sm:gap-8 ${
+              gridWebinars.length >= 3 ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2'
+            }`}
+          >
+            {gridWebinars.map((post) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.slug}`}
+                className={`group flex flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                  post.slug === featuredPost.slug
+                    ? 'border-[#2867AE]/40 ring-2 ring-[#2867AE]/15'
+                    : 'border-slate-200/80'
+                }`}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent opacity-0 transition group-hover:opacity-100" />
+                </div>
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  {post.slug === featuredPost.slug ? (
+                    <span className="mb-2 w-fit rounded-full bg-[#2867AE]/10 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-[#2867AE]">
+                      Featured
+                    </span>
+                  ) : null}
+                  <h3 className="text-lg font-semibold leading-snug text-slate-900 transition group-hover:text-[#2867AE] sm:text-xl">
+                    {post.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-slate-600">{post.description}</p>
+                  <p className="mt-4 text-xs font-medium text-slate-400">
+                    {post.author} · {post.date}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       <Footer />
