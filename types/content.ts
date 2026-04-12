@@ -49,6 +49,8 @@ export interface AboutContent {
   imageAlt: string;
 }
 
+export type BlogPostCategory = 'webinar' | 'training';
+
 export interface BlogPostManifest {
   id: string;
   slug: string;
@@ -58,13 +60,14 @@ export interface BlogPostManifest {
   date: string;
   image: string;
   featured?: boolean;
+  category?: BlogPostCategory;
 }
 
 export interface BlogPost extends BlogPostManifest {
   content?: string;
 }
 
-export type NewsCategory = 'webinar' | 'training' | 'resource';
+export type NewsCategory = 'webinar' | 'training';
 
 export interface NewsItem {
   id: string;
@@ -74,6 +77,8 @@ export interface NewsItem {
   image: string;
   category: NewsCategory;
   featured?: boolean;
+  /** When false, registration is closed (e.g. past event). */
+  registrationOpen?: boolean;
 }
 
 export interface EligibilityHero {
