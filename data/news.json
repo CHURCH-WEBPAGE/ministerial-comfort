@@ -2,84 +2,31 @@
   "items": [
     {
       "id": "1",
-      "slug": "building-emotional-resilience-in-ministry",
-      "title": "Building Emotional Resilience in Ministry",
-      "description": "Learn practical strategies to stay emotionally strong while leading......",
-      "image": "/assets/news/proactive-emotional-health.svg",
+      "slug": "mcr-webinar-2025-10-30",
+      "title": "The Emotional Health of the Leader",
+      "description": "National Board of Directors of the Foursquare Gospel Church in Nigeria, with Rev. Paul Kuzma (Centre for Spiritual Renewal, Christiansburg, VA, USA). Thursday 30 October 2025.",
+      "image": "/assets/blog/mcr-webinar-2025-10-30.jpg",
       "category": "webinar",
-      "featured": true
+      "featured": true,
+      "registrationOpen": false
     },
     {
       "id": "2",
-      "slug": "effective-counseling-for-congregation-members",
-      "title": "Effective Counseling for Congregation Members",
-      "description": "Explore counseling techniques for pastors and ministry leaders to support their church members emotional and spiritual well-being.",
-      "image": "/assets/news/effective-counseling.svg",
-      "category": "webinar"
+      "slug": "mcr-webinar-2025-11-21",
+      "title": "Spiritual Renewal and Emotionally Healthy Discipleship",
+      "description": "National Executive Council of the Foursquare Gospel Church in Nigeria and invited ministers, with Rev. Paul Kuzma. Friday 21 November 2025.",
+      "image": "/assets/blog/mcr-webinar-2025-11-21.jpg",
+      "category": "webinar",
+      "registrationOpen": false
     },
     {
       "id": "3",
-      "slug": "proactive-vs-reactive-emotional-care",
-      "title": "Proactive vs. Reactive Emotional Care in Ministry",
-      "description": "Understand the balance between preventing emotional challenges and responding to them effectively in ministry settings.",
-      "image": "/assets/news/care-in-ministry.svg",
-      "category": "webinar"
-    },
-    {
-      "id": "4",
-      "slug": "hospitality-community-support-emotional-health",
-      "title": "Hospitality and Community Support as Emotional Health Tools",
-      "description": "Learn how practicing hospitality and serving your community can strengthen emotional wellness for both leaders and members.",
-      "image": "/assets/news/hospitality-support.png",
-      "category": "webinar"
-    },
-    {
-      "id": "5",
-      "slug": "total-approach-emotional-health",
-      "title": "The Total Approach to Emotional Health",
-      "description": "Balancing proactive and reactive care.",
-      "image": "/assets/news/total-approach.svg",
-      "category": "training"
-    },
-    {
-      "id": "6",
-      "slug": "how-to-listen-like-counselor",
-      "title": "How to Listen Like a Counselor",
-      "description": "Effective listening techniques for ministers.",
-      "image": "/assets/news/how-to-listen.svg",
-      "category": "training"
-    },
-    {
-      "id": "7",
-      "slug": "managing-burnout-in-ministry",
-      "title": "Managing Burnout in Ministry",
-      "description": "Early signs and recovery steps.",
-      "image": "/assets/news/managin-bornout.svg",
-      "category": "training"
-    },
-    {
-      "id": "8",
-      "slug": "practical-tools-emotional-spiritual-growth",
-      "title": "Practical tools for emotional and spiritual growth.",
-      "description": "Practical tools for emotional and spiritual growth.",
-      "image": "/assets/news/practical tools.svg",
-      "category": "resource"
-    },
-    {
-      "id": "9",
-      "slug": "simple-tools-ministers-stay-grounded",
-      "title": "Simple tools that help ministers stay grounded",
-      "description": "Simple tools that help ministers stay grounded",
-      "image": "/assets/news/simpletools.svg",
-      "category": "resource"
-    },
-    {
-      "id": "10",
-      "slug": "spiritual-strength-emotional-balance",
-      "title": "Spiritual strength fuels emotional balance.",
-      "description": "Spiritual strength fuels emotional balance.",
-      "image": "/assets/news/spiritual-strenght.svg",
-      "category": "resource"
+      "slug": "mcr-webinar-2025-12-12",
+      "title": "Service Excellence in a Spiritual Renewal Ministry",
+      "description": "MCR Team session with Ginny Drews (Guest Services Team Lead, Cross Pointe Conference Centre, Centre for Spiritual Renewal, Christiansburg, VA, USA). Friday 12 December 2025.",
+      "image": "/assets/blog/mcr-webinar-2025-12-12.png",
+      "category": "webinar",
+      "registrationOpen": false
     }
   ]
 }

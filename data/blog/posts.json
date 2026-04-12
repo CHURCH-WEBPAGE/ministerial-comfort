@@ -2,43 +2,34 @@
   "posts": [
     {
       "id": "1",
-      "slug": "proactive-emotional-health-in-ministry",
-      "title": "Proactive Emotional Health in Ministry",
-      "description": "Understanding the importance of maintaining emotional wellness before challenges arise in ministry work.",
-      "author": "Rev. Samuel Adeyemi",
-      "date": "15th Jan. 2025",
-      "image": "/assets/blog/handling-stress.svg",
-      "featured": true
+      "slug": "mcr-webinar-2025-10-30",
+      "title": "The Emotional Health of the Leader",
+      "description": "Webinar insights, National Board of Directors, 30 October 2025. Rev. Paul Kuzma on emotional and spiritual maturity in leadership.",
+      "author": "MCR Communications",
+      "date": "30 October 2025",
+      "image": "/assets/blog/mcr-webinar-2025-10-30.jpg",
+      "featured": true,
+      "category": "webinar"
     },
     {
       "id": "2",
-      "slug": "handling-stress-in-ministry",
-      "title": "Handling Stress in Ministry",
-      "description": "Stress is natural in ministry. Recognizing it early and seeking guidance from mentors or counselors prevents burnout and keeps your service effective.....",
-      "author": "Pastor Grace Olamide",
-      "date": "19th Jan. 2025",
-      "image": "/assets/blog/handling-stress.svg",
-      "featured": false
+      "slug": "mcr-webinar-2025-11-21",
+      "title": "Spiritual Renewal and Emotionally Healthy Discipleship",
+      "description": "Webinar insights, National Executive Council and invited ministers, 21 November 2025.",
+      "author": "MCR Communications",
+      "date": "21 November 2025",
+      "image": "/assets/blog/mcr-webinar-2025-11-21.jpg",
+      "category": "webinar"
     },
     {
       "id": "3",
-      "slug": "balancing-proactive-and-reactive-care",
-      "title": "Balancing Proactive and Reactive Care",
-      "description": "Proactive care builds resilience; reactive care heals when challenges arise. Ministry leaders need both to serve their communities effectively....",
-      "author": "Rev. Michael Chukwu",
-      "date": "29th Jun. 2025",
-      "image": "/assets/blog/balancing-care.svg",
-      "featured": false
-    },
-    {
-      "id": "4",
-      "slug": "the-role-of-hospitality-in-emotional-wellness",
-      "title": "The Role of Hospitality in Emotional Wellness",
-      "description": "Welcoming and supporting others strengthens both the giver and receiver. Hospitality in ministry fosters emotional health for the whole community....",
-      "author": "Pastor Naomi Eze",
-      "date": "30th Sept. 2025",
-      "image": "/assets/blog/hospitality.png",
-      "featured": false
+      "slug": "mcr-webinar-2025-12-12",
+      "title": "Service Excellence in a Spiritual Renewal Ministry",
+      "description": "Webinar insights, MCR Team, 12 December 2025. Guest speaker Ginny Drews.",
+      "author": "MCR Communications",
+      "date": "12 December 2025",
+      "image": "/assets/blog/mcr-webinar-2025-12-12.png",
+      "category": "webinar"
     }
   ]
 }
