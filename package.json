@@ -3,20 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean": "node -e \"try{require('fs').rmSync('.next',{recursive:true,force:true});}catch(e){if(e.code!=='ENOENT')throw e;}\"",
     "dev": "next dev",
+    "dev:clean": "npm run clean && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "data:blog-articles": "node scripts/build-blog-articles.cjs"
   },
   "dependencies": {
+    "framer-motion": "^12.38.0",
     "next": "^14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-markdown": "^10.1.0",
     "react-toastify": "^11.0.5",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.14.7",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

@@ -4,32 +4,11 @@
 
 @layer base {
   body {
-    @apply text-gray-900;
+    @apply text-gray-900 antialiased;
   }
 }
 
 @layer utilities {
-  .text-blue-600 {
-    color: #2867AE;
-  }
-  .bg-blue-600 {
-    background-color: #2867AE;
-  }
-  .bg-blue-700 {
-    background-color: #1e4d7a;
-  }
-  .hover\:bg-blue-700:hover {
-    background-color: #1e4d7a;
-  }
-  .hover\:text-blue-600:hover {
-    color: #2867AE;
-  }
-  .border-blue-500 {
-    border-color: #2867AE;
-  }
-  .focus\:border-blue-500:focus {
-    border-color: #2867AE;
-  }
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -55,6 +34,24 @@
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-duration: var(--event-marquee-duration, 120s);
+  }
+
+  @keyframes heroKen {
+    from {
+      transform: scale(1.04) translate(0, 0);
+    }
+    to {
+      transform: scale(1.1) translate(-0.8%, 0.5%);
+    }
+  }
+  .animate-hero-ken {
+    animation: heroKen 32s ease-in-out infinite alternate;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-ken {
+      animation: none;
+    }
   }
 }
 
