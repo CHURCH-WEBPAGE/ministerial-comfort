@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollDownArrow from '@/components/ScrollDownArrow';
+import PageLoader from '@/components/PageLoader';
 import { useApiResource } from '@/hooks/useApiResource';
 import type { ServicesContent } from '@/types/content';
 
@@ -19,11 +20,22 @@ export default function ServicesPage() {
     router.back();
   };
 
+  if (loading) {
+    return (
+      <main className="flex min-h-screen flex-col bg-white">
+        <Header />
+        <PageLoader />
+        <Footer />
+        <ScrollDownArrow />
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="mb-12">
+      <div className="container mx-auto px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-28">
+        <div className="mb-12 md:mb-14">
           <div className="flex items-center mb-6">
             <button
               onClick={handleBack}
@@ -51,14 +63,12 @@ export default function ServicesPage() {
           </div>
           
           <p className="text-lg text-gray-700 leading-relaxed max-w-4xl">
-            {loading ? 'Loading…' : error ? 'Unable to load intro.' : pageIntro}
+            {error ? 'Unable to load intro.' : pageIntro}
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {loading ? (
-            <p className="text-gray-500 col-span-full text-sm">Loading services…</p>
-          ) : error || !services.length ? (
+          {error || !services.length ? (
             <p className="text-gray-500 col-span-full text-sm">
               {error ? 'Unable to load services.' : 'No services available.'}
             </p>

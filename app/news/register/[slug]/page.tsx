@@ -1,11 +1,13 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import PageLoader from '@/components/PageLoader';
 import { useFormStore } from '@/store/formStore';
 import { useApiResource } from '@/hooks/useApiResource';
 import type { NewsItem } from '@/types/content';
@@ -36,8 +38,24 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!registrationForm.name || !registrationForm.email || !registrationForm.mobile) {
-      toast.error('Please fill in all fields');
+    const name = registrationForm.name?.trim();
+    const email = registrationForm.email?.trim();
+    const mobile = registrationForm.mobile?.trim();
+
+    if (!name) {
+      toast.error('Please enter your name.');
+      return;
+    }
+    if (!email) {
+      toast.error('Please enter your email address.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+    if (!mobile) {
+      toast.error('Please enter your mobile number.');
       return;
     }
 
@@ -81,7 +99,7 @@ export default function RegisterPage() {
     return (
       <main className="min-h-screen bg-white">
         <Header />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="container mx-auto px-4 py-28 sm:px-6 md:py-32 lg:px-8 lg:py-36">
           <p className="text-center text-gray-500 text-sm">Loading…</p>
         </div>
         <Footer />
@@ -93,13 +111,15 @@ export default function RegisterPage() {
     return (
       <main className="min-h-screen bg-white">
         <Header />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="container mx-auto px-4 py-28 sm:px-6 md:py-32 lg:px-8 lg:py-36">
           <p className="text-center text-gray-600">Event not found.</p>
         </div>
         <Footer />
       </main>
     );
   }
+
+  const registrationClosed = event.registrationOpen === false;
 
   return (
     <main className="min-h-screen bg-white">
@@ -142,22 +162,43 @@ export default function RegisterPage() {
               </button>
             </div>
             <div className="max-w-3xl">
-              <p className="text-white/80 text-sm md:text-base mb-2">Register</p>
+              <p className="text-white/80 text-sm md:text-base mb-2">
+                {registrationClosed ? 'Past session' : 'Register'}
+              </p>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
                 {event.title}
               </h1>
-              <p className="text-white/90 text-base md:text-lg">
-                {event.description}
-              </p>
+              <p className="text-white/90 text-base md:text-lg mb-4">{event.description}</p>
+              {registrationClosed ? (
+                <Link
+                  href={`/blog/${event.slug}`}
+                  className="inline-flex bg-white text-[#2867AE] hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"
+                >
+                  Read article
+                </Link>
+              ) : null}
             </div>
           </div>
         </div>
       </section>
 
       {/* Registration Form */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <section className="container mx-auto px-4 pb-20 sm:px-6 md:pb-24 lg:px-8 lg:pb-28">
         <div className="max-w-md mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          {registrationClosed ? (
+            <div className="rounded-lg border border-gray-200 bg-gray-50 px-6 py-8 text-center text-gray-700">
+              <p className="mb-4 leading-relaxed">
+                Registration for this session has closed. Open the article for a written summary of the session.
+              </p>
+              <Link
+                href={`/blog/${event.slug}`}
+                className="inline-flex bg-[#2867AE] hover:bg-[#1e4d7a] text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Read article
+              </Link>
+            </div>
+          ) : (
+          <form noValidate onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                 Name
@@ -213,6 +254,7 @@ export default function RegisterPage() {
               Register
             </button>
           </form>
+          )}
         </div>
       </section>
 

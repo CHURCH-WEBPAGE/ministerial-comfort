@@ -7,6 +7,7 @@ import Gallery from '@/components/Gallery';
 import EligibilityBanner from '@/components/EligibilityBanner';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
+import DonateSection from '@/components/DonateSection';
 import Footer from '@/components/Footer';
 import ScrollDownArrow from '@/components/ScrollDownArrow';
 
@@ -22,6 +23,7 @@ export default function Home() {
       <EligibilityBanner />
       <FAQ />
       <Contact />
+      <DonateSection />
       <Footer />
       <ScrollDownArrow />
     </main>
