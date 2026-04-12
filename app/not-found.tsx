@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { SITE_NAME } from '@/lib/site';
+
+export const metadata: Metadata = {
+  title: { absolute: `Page not found | ${SITE_NAME}` },
+  description: 'This page does not exist or has been moved. Return to the MCR home page.',
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

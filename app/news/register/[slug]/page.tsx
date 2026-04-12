@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ProgressiveImage';
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
 import { useEffect } from 'react';

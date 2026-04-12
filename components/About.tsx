@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ProgressiveImage';
 import { Cormorant_Garamond } from 'next/font/google';
 import { motion } from 'framer-motion';
 import PageLoader from '@/components/PageLoader';

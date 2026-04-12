@@ -10,40 +10,6 @@ import {
   DONATE_BANK_NAME,
 } from '@/lib/donate';
 
-function DetailBlock({
-  label,
-  value,
-  mono,
-  onCopy,
-  copyLabel,
-}: {
-  label: string;
-  value: string;
-  mono?: boolean;
-  onCopy?: () => void;
-  copyLabel?: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-sm transition hover:border-[#2867AE]/30 hover:shadow-md">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{label}</p>
-      <p
-        className={`mt-3 text-slate-900 ${mono ? 'font-mono text-lg tracking-wide sm:text-xl' : 'text-base font-medium leading-snug sm:text-lg'}`}
-      >
-        {value}
-      </p>
-      {onCopy ? (
-        <button
-          type="button"
-          onClick={onCopy}
-          className="mt-4 text-sm font-semibold text-[#2867AE] underline-offset-4 hover:underline"
-        >
-          {copyLabel ?? 'Copy'}
-        </button>
-      ) : null}
-    </div>
-  );
-}
-
 export default function DonateSection() {
   const [copied, setCopied] = useState(false);
 
@@ -72,7 +38,7 @@ export default function DonateSection() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,23 +63,38 @@ export default function DonateSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 grid gap-5 md:grid-cols-3"
+          className="mt-10"
         >
-          <div className="md:col-span-3">
-            <DetailBlock label="Account name" value={DONATE_ACCOUNT_NAME} />
-          </div>
-          <DetailBlock
-            label="Account number"
-            value={DONATE_ACCOUNT_NUMBER_DISPLAY}
-            mono
-            onCopy={copyNumber}
-            copyLabel={copied ? 'Copied' : 'Copy account number'}
-          />
-          <DetailBlock label="Bank name" value={DONATE_BANK_NAME} />
-          <div className="flex items-center justify-center rounded-2xl border border-dashed border-slate-300/90 bg-slate-50/80 p-6 text-center text-sm text-slate-600">
-            <p>
-              Reference your name or church on the transfer when possible so we can acknowledge your generosity.
-            </p>
+          <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 shadow-lg ring-1 ring-slate-900/[0.04] backdrop-blur-sm">
+            <div className="divide-y divide-slate-200/90">
+              <div className="px-6 py-5 sm:px-8 sm:py-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Account name</p>
+                <p className="mt-2 text-base font-medium leading-snug text-slate-900 sm:text-lg">
+                  {DONATE_ACCOUNT_NAME}
+                </p>
+              </div>
+              <div className="px-6 py-5 sm:px-8 sm:py-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Account number</p>
+                    <p className="mt-2 font-mono text-lg tracking-wide text-slate-900 sm:text-xl">
+                      {DONATE_ACCOUNT_NUMBER_DISPLAY}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={copyNumber}
+                    className="shrink-0 self-start rounded-lg border border-[#2867AE]/30 bg-[#2867AE]/5 px-4 py-2.5 text-sm font-semibold text-[#2867AE] transition hover:bg-[#2867AE]/10 sm:self-center"
+                  >
+                    {copied ? 'Copied' : 'Copy account number'}
+                  </button>
+                </div>
+              </div>
+              <div className="px-6 py-5 sm:px-8 sm:py-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Bank name</p>
+                <p className="mt-2 text-base font-medium text-slate-900 sm:text-lg">{DONATE_BANK_NAME}</p>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

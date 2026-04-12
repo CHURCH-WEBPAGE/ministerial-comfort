@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ProgressiveImage';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { CONTACT_ADDRESS, SUPPORT_EMAIL, SUPPORT_PHONE_DISPLAY, SUPPORT_PHONE_TEL } from '@/lib/contact';
