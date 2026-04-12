@@ -170,7 +170,7 @@ export default function NotificationBanner() {
           </div>
 
           {/* Continuous scrolling marquee: two identical copies side by side.
-              Track must be w-max + shrink-0 so width = content, not viewport — otherwise only ~one event fits in the "box" and the rest is clipped. */}
+              Track must be w-max + shrink-0 so width = content, not viewport; otherwise only ~one event fits in the "box" and the rest is clipped. */}
           <div className="min-w-0 flex-1 overflow-hidden relative">
             <div
               ref={marqueeTrackRef}
