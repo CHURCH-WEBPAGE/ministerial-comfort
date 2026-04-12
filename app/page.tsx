@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: '/',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: [{ url: DEFAULT_OG_IMAGE_PATH, width: 1200, height: 630, alt: SITE_NAME }],
+    images: [{ url: DEFAULT_OG_IMAGE_PATH, alt: `${SITE_NAME} logo` }],
   },
   twitter: {
     title: SITE_NAME,
