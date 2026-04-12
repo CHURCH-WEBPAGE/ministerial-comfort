@@ -1,6 +1,6 @@
 /** Shared contact copy used across Footer, Contact, etc. */
 export const CONTACT_ADDRESS =
-  'Foursquare Gospel Church, Victoria Garden City, Lagos Nigeria';
+  'Foursquare Gospel Church, Victoria Garden City, Lagos, Nigeria';
 
 export const SUPPORT_EMAIL = 'support@foursquaremcr.org';
 

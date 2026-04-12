@@ -77,8 +77,10 @@ export interface NewsItem {
   image: string;
   category: NewsCategory;
   featured?: boolean;
-  /** When false, registration is closed (e.g. past event). */
+  /** When false, registration is closed regardless of date. */
   registrationOpen?: boolean;
+  /** Event day YYYY-MM-DD (local). Used with today to show Register vs Closed. */
+  eventDate?: string;
 }
 
 export interface EligibilityHero {

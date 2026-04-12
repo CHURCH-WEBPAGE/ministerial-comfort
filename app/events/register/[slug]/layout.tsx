@@ -23,9 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: { canonical: `/news/register/${params.slug}` },
+    alternates: { canonical: `/events/register/${params.slug}` },
     openGraph: {
-      url: `/news/register/${params.slug}`,
+      url: `/events/register/${params.slug}`,
       title,
       description,
       images: [{ url: item.image, alt: item.title }],
@@ -39,6 +39,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function NewsRegisterLayout({ children }: Props) {
+export default function EventRegisterLayout({ children }: Props) {
   return children;
 }

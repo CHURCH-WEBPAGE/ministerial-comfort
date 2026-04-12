@@ -104,7 +104,7 @@ Ministers who resist rest eventually reach a point where they have nothing left 
 
 ### MCR: A Lifeline, Not a Last Resort
 
-Rev. Kuzma highlighted the MCR initiative as a structured, accessible framework designed to ensure that no minister suffers in isolation. The program offers access to counselling, renewal facilities, and practical support across Nigeria. Community support, he said, is not optional, it is vital. Shared experiences and collaborative care create the conditions for real healing.
+Rev. Kuzma highlighted the MCR as a structured, accessible framework designed to ensure that no minister suffers in isolation. The program offers access to counselling, renewal facilities, and practical support. Community support, he said, is not optional, it is vital. Shared experiences and collaborative care create the conditions for real healing.
 
 ### Key Takeaways
 
@@ -112,7 +112,7 @@ Rev. Kuzma highlighted the MCR initiative as a structured, accessible framework 
 - Emotional health must be prioritised alongside spiritual growth.
 - Counselling and therapy are valuable tools, not signs of weakness.
 - Sabbaticals and intentional rest can prevent long-term damage to ministers' health and calling.
-- The MCR initiative provides a structured framework so no minister suffers in isolation.
+- The MCR provides a structured framework so no minister suffers in isolation.
 - Testimonies of recovery can inspire and encourage others to seek help.
 
 ### Action Points
@@ -179,7 +179,7 @@ The session left the MCR team with a broadened vision of what their work means. 
 - Every detail, from keypads to Bibles to laundry facilities, communicates dignity and care.
 - Serving ministers well is itself a form of ministry.
 
-*These summaries are based on the MCR webinar series hosted by the Ministerial Comfort and Renewal initiative of the Foursquare Gospel Church in Nigeria.*`;
+*These summaries are based on the MCR webinar series hosted by the Ministerial Comfort and Renewal of the Foursquare Gospel Church in Nigeria.*`;
 
 const articles = [
   { slug: 'mcr-webinar-2025-10-30', content: post1 },

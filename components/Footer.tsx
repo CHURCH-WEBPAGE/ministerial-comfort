@@ -19,7 +19,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm text-white/80 leading-relaxed mb-6">
-              Ministerial Comfort and Renewal (MCR) serves ministers across Nigeria with hope, care, and practical
+              Ministerial Comfort and Renewal (MCR) serves ministers with hope, care, and practical
               support.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -75,8 +75,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="hover:text-white transition-colors">
-                  News &amp; events
+                <Link href="/events" className="hover:text-white transition-colors">
+                  Events
                 </Link>
               </li>
               <li>

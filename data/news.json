@@ -8,7 +8,8 @@
       "image": "/assets/blog/mcr-webinar-2025-10-30.jpg",
       "category": "webinar",
       "featured": true,
-      "registrationOpen": false
+      "registrationOpen": true,
+      "eventDate": "2025-10-30"
     },
     {
       "id": "2",
@@ -17,7 +18,8 @@
       "description": "National Executive Council of the Foursquare Gospel Church in Nigeria and invited ministers, with Rev. Paul Kuzma. Friday 21 November 2025.",
       "image": "/assets/blog/mcr-webinar-2025-11-21.jpg",
       "category": "webinar",
-      "registrationOpen": false
+      "registrationOpen": true,
+      "eventDate": "2025-11-21"
     },
     {
       "id": "3",
@@ -26,7 +28,8 @@
       "description": "MCR Team session with Ginny Drews (Guest Services Team Lead, Cross Pointe Conference Centre, Centre for Spiritual Renewal, Christiansburg, VA, USA). Friday 12 December 2025.",
       "image": "/assets/blog/mcr-webinar-2025-12-12.png",
       "category": "webinar",
-      "registrationOpen": false
+      "registrationOpen": true,
+      "eventDate": "2025-12-12"
     }
   ]
 }
