@@ -17,7 +17,7 @@ His answer was no.
 
 ### Emotional Health Is Not Optional
 
-Rev. Kuzma opened the session by drawing a distinction many in the church often blur: emotional health and mental health are not the same thing, but they are deeply intertwined. In many church contexts, there is a lingering stigma around mental health conversations, an unspoken belief that faith should be sufficient. But this stigma, Kuzma argued, is dangerous. Leaders must learn to recognise when pastoral care and counselling are sufficient, and when clinical intervention is necessary.
+Rev. Kuzma opened the session by drawing a distinction many in the church often blur: emotional health and emotional health are not the same thing, but they are deeply intertwined. In many church contexts, there is a lingering stigma around emotional health conversations, an unspoken belief that faith should be sufficient. But this stigma, Kuzma argued, is dangerous. Leaders must learn to recognise when pastoral care and counselling are sufficient, and when clinical intervention is necessary.
 
 The bottom line: spiritual maturity and emotional maturity must grow together. One cannot flourish without the other.
 
@@ -60,12 +60,12 @@ Healthy pastors, Kuzma concluded, are characterised by **joy, vulnerability, tea
 - Spiritual and emotional health are connected; both require intentional care.
 - Stay focused on your God-given calling; avoid what drains and distracts.
 - Rest is not optional, plan for it deliberately.
-- Normalise emotional and mental health conversations within your church community.
+- Normalise emotional and emotional health conversations within your church community.
 
 ### Action Points
 
 - Integrate emotional health into discipleship practices.
-- Destigmatise mental health discussions within the church.
+- Destigmatise emotional health discussions within the church.
 - Encourage pastors to adopt rhythms of rest and sabbatical.
 - Promote vulnerability and testimony as leadership strengths.
 - Model recovery and emotional health as part of spiritual leadership.`;

@@ -1,23 +1,23 @@
 {
-  "pageIntro": "The Ministerial Comfort and Renewal (MCR) organises its work around four pillars: raising awareness and capacity for emotional and mental health, promoting emotionally healthy living, multi-disciplinary counseling, and a rest and recovery facility. Together they support ministers through education, practical life patterns, professional care, and space to heal.",
+  "pageIntro": "MCR works through four pillars—emotional health awareness, emotionally healthy living, multi-disciplinary counseling, and rest & recovery—bringing education, practical care, and space to heal for ministers.",
   "items": [
     {
-      "title": "Building awareness of emotional health and mental health",
+      "title": "Building Awareness on Emotional Health",
       "image": "/assets/emotionalhealth.svg",
-      "description": "MCR helps ministers and leaders grow in understanding of emotional and mental well-being. Through teaching, resources, and conversation, we shine a light on what healthy ministry requires. A core part of this pillar is building capacity, equipping people and churches to recognise needs early and respond with wisdom and care."
+      "description": "MCR helps ministers and leaders grow in understanding of emotional well-being. Through teaching, resources, and conversation, we shine a light on what healthy ministry requires. A core part of this pillar is building capacity, equipping people and churches to recognise needs early and respond with wisdom and care."
     },
     {
-      "title": "Promoting emotionally healthy living",
+      "title": "Building Awareness on Emotionally Healthy Discipleship",
       "image": "/assets/ministerialpeer.svg",
       "description": "We champion rhythms and practices that support whole-person health in ministry: sustainable boundaries, connection, and habits that honour both calling and humanity. The goal is not perfection but a way of living and serving that can be maintained with integrity over the long term."
     },
     {
-      "title": "Counseling (multi-disciplinary)",
+      "title": "Counselling Support for Recovery",
       "image": "/assets/emergencyandcrisis.svg",
-      "description": "Professional counseling is offered through a multi-disciplinary lens, so care can be tailored to the minister, spouse, or family. This brings together appropriate expertise to address emotional, relational, and mental health needs in a confidential, respectful setting."
+      "description": "Professional counseling is offered through a multi-disciplinary lens, so care can be tailored to the minister, spouse, or family. This brings together appropriate expertise to address emotional and relational health needs in a confidential, respectful setting."
     },
     {
-      "title": "Rest and recovery facility",
+      "title": "Rest & Recuperation Support",
       "image": "/assets/ministerialrenewal.png",
       "description": "MCR provides a dedicated rest and recovery facility for times when ministry has taken a heavy toll. It is a place to step back, breathe, and receive structured support toward renewal, so leaders can recover strength before returning to service, or discern next steps with clarity."
     }

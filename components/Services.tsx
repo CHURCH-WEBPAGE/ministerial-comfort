@@ -23,11 +23,16 @@ export default function Services() {
           <div className="max-w-2xl space-y-4">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#2867AE]">What we offer</p>
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
-              Our programs &amp; services
+              Our Programs &amp; Services
             </h2>
-            <p className="text-lg text-slate-600 md:text-xl">
-              Practical pathways toward healing, rest, and renewed strength in ministry.
-            </p>
+            {error ? (
+              <p className="text-sm text-red-600">Unable to load programs and services.</p>
+            ) : (
+              <p className="text-lg text-slate-600 md:text-xl leading-relaxed">
+                {servicesContent?.pageIntro ??
+                  'MCR works through four pillars—emotional health awareness, emotionally healthy living, multi-disciplinary counseling, and rest & recovery—bringing education, practical care, and space to heal for ministers.'}
+              </p>
+            )}
           </div>
           <Link
             href="/services"
