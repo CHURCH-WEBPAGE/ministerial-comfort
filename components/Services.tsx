@@ -30,7 +30,7 @@ export default function Services() {
             ) : (
               <p className="text-lg text-slate-600 md:text-xl leading-relaxed">
                 {servicesContent?.pageIntro ??
-                  'MCR works through four pillars—emotional health awareness, emotionally healthy living, multi-disciplinary counseling, and rest & recovery—bringing education, practical care, and space to heal for ministers.'}
+                  'MCR works through four pillars: emotional health awareness, emotionally healthy living, multi-disciplinary counseling, and rest & recovery, bringing education, practical care, and space to heal for ministers.'}
               </p>
             )}
           </div>

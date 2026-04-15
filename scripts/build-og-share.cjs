@@ -16,7 +16,7 @@ const BRAND = '#2867AE';
 
 const TITLE = 'Ministerial Comfort and Renewal (MCR)';
 const TAG =
-  'Restoring hope and renewal for ministers — support, counseling, and resources (Foursquare Gospel Church Nigeria).';
+  'Restoring hope and renewal for ministers through support, counseling, and resources (Foursquare Gospel Church Nigeria).';
 
 async function main() {
   const canvas = new Jimp(W, H, BRAND);
