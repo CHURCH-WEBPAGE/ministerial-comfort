@@ -3,11 +3,15 @@
 import Image from '@/components/ProgressiveImage';
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageLoader from '@/components/PageLoader';
+import FormSubmitButton from '@/components/FormSubmitButton';
+import { getEmailJsErrorMessage } from '@/lib/getEmailJsErrorMessage';
+import { isValidEmail, isValidPhone } from '@/lib/formValidation';
+import { sendSupportInquiryEmail } from '@/lib/sendSupportEmail';
 import { useFormStore } from '@/store/formStore';
 import { useApiResource } from '@/hooks/useApiResource';
 import { isEventRegistrationAvailable } from '@/lib/eventRegistration';
@@ -21,14 +25,19 @@ export default function EventRegisterPage() {
     slug ? `/api/news/${encodeURIComponent(slug)}` : null
   );
   const { registrationForm, setRegistrationForm, clearRegistrationForm } = useFormStore();
+  const prevSlugRef = useRef<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (slug && registrationForm.eventSlug !== slug) {
-      setRegistrationForm({ eventSlug: slug });
+    if (!slug) return;
+    if (prevSlugRef.current !== '' && prevSlugRef.current !== slug) {
+      clearRegistrationForm();
     }
-  }, [slug, registrationForm.eventSlug, setRegistrationForm]);
+    prevSlugRef.current = slug;
+    setRegistrationForm({ eventSlug: slug });
+  }, [slug, clearRegistrationForm, setRegistrationForm]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setRegistrationForm({ [name]: value });
   };
@@ -36,51 +45,78 @@ export default function EventRegisterPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const name = registrationForm.name?.trim();
-    const email = registrationForm.email?.trim();
-    const mobile = registrationForm.mobile?.trim();
+    if (!event) return;
 
-    if (!name) {
-      toast.error('Please enter your name.');
+    const firstName = registrationForm.firstName?.trim();
+    const lastName = registrationForm.lastName?.trim();
+    const email = registrationForm.email?.trim();
+    const phone = registrationForm.phone?.trim();
+    const extraNote = registrationForm.note?.trim();
+
+    if (!firstName) {
+      toast.error('Please enter your first name.');
+      return;
+    }
+    if (!lastName) {
+      toast.error('Please enter your last name.');
       return;
     }
     if (!email) {
       toast.error('Please enter your email address.');
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!isValidEmail(email)) {
       toast.error('Please enter a valid email address.');
       return;
     }
-    if (!mobile) {
-      toast.error('Please enter your mobile number.');
+    if (!phone) {
+      toast.error('Please enter your phone number.');
+      return;
+    }
+    if (!isValidPhone(phone)) {
+      toast.error('Please enter a valid phone number.');
       return;
     }
 
+    const composedNote = [
+      'Event registration',
+      `Event: ${event.title}`,
+      '',
+      extraNote || '(No additional note from the registrant.)',
+    ].join('\n');
+
+    setIsSubmitting(true);
     try {
-      const savingToast = toast.loading('Saving your registration...', {
-        position: 'top-right',
+      await sendSupportInquiryEmail({
+        firstName,
+        lastName,
+        email,
+        phone,
+        note: composedNote,
       });
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      toast.update(savingToast, {
-        render: 'Registration successful! You will hear from us soon.',
-        type: 'success',
-        isLoading: false,
-        autoClose: 3000,
-      });
+      toast.success(
+        'Registration received. Our support team will review your details and contact you shortly.',
+        {
+          position: 'top-right',
+          autoClose: 4000,
+          hideProgressBar: true,
+        }
+      );
 
       clearRegistrationForm();
 
       setTimeout(() => {
         router.push('/events');
       }, 2000);
-    } catch {
-      toast.error('Failed to submit registration. Please try again.', {
+    } catch (err) {
+      toast.error(getEmailJsErrorMessage(err), {
         position: 'top-right',
-        autoClose: 3000,
+        autoClose: 6000,
+        hideProgressBar: true,
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -184,20 +220,41 @@ export default function EventRegisterPage() {
             </div>
           ) : (
             <form noValidate onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={registrationForm.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-[#2867AE]"
-                  placeholder="Enter your full name"
-                />
+              <fieldset
+                disabled={isSubmitting}
+                className="min-w-0 space-y-6 border-0 p-0 disabled:opacity-75"
+              >
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="firstName" className="mb-2 block text-sm font-medium text-gray-700">
+                    First name
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={registrationForm.firstName}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-[#2867AE]"
+                    placeholder="First name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="lastName" className="mb-2 block text-sm font-medium text-gray-700">
+                    Last name
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={registrationForm.lastName}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-[#2867AE]"
+                    placeholder="Last name"
+                  />
+                </div>
               </div>
 
               <div>
@@ -217,27 +274,43 @@ export default function EventRegisterPage() {
               </div>
 
               <div>
-                <label htmlFor="mobile" className="mb-2 block text-sm font-medium text-gray-700">
-                  Mobile Number
+                <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-700">
+                  Phone number
                 </label>
                 <input
                   type="tel"
-                  id="mobile"
-                  name="mobile"
-                  value={registrationForm.mobile}
+                  id="phone"
+                  name="phone"
+                  value={registrationForm.phone}
                   onChange={handleChange}
                   required
                   className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-[#2867AE]"
-                  placeholder="Enter your mobile number"
+                  placeholder="Enter your phone number"
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full rounded-lg bg-[#2867AE] px-8 py-3 font-semibold text-white shadow-md transition-colors hover:bg-[#1e4d7a]"
-              >
-                Register
-              </button>
+              <div>
+                <label htmlFor="note" className="mb-2 block text-sm font-medium text-gray-700">
+                  Note <span className="font-normal text-gray-500">(optional)</span>
+                </label>
+                <textarea
+                  id="note"
+                  name="note"
+                  value={registrationForm.note}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-[#2867AE]"
+                  placeholder="Dietary needs, accessibility, or anything else we should know"
+                />
+              </div>
+
+              </fieldset>
+              <FormSubmitButton
+                isLoading={isSubmitting}
+                idleLabel="Register"
+                loadingLabel="Submitting…"
+                className="rounded-lg bg-[#2867AE] px-8 py-3 text-white shadow-md hover:bg-[#1e4d7a]"
+              />
             </form>
           )}
         </div>

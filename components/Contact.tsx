@@ -1,15 +1,21 @@
 'use client';
 
+import { useState } from 'react';
 import Image from '@/components/ProgressiveImage';
+import FormSubmitButton from '@/components/FormSubmitButton';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { CONTACT_ADDRESS, SUPPORT_EMAIL, SUPPORT_PHONE_DISPLAY, SUPPORT_PHONE_TEL } from '@/lib/contact';
+import { isValidEmail, isValidPhone } from '@/lib/formValidation';
+import { getEmailJsErrorMessage } from '@/lib/getEmailJsErrorMessage';
+import { sendSupportInquiryEmail } from '@/lib/sendSupportEmail';
 import { useFormStore } from '@/store/formStore';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Contact() {
   const { contactForm, setContactForm, clearContactForm } = useFormStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +23,8 @@ export default function Contact() {
     const firstName = contactForm.firstName?.trim();
     const lastName = contactForm.lastName?.trim();
     const email = contactForm.email?.trim();
-    const message = contactForm.message?.trim();
+    const phone = contactForm.phone?.trim();
+    const note = contactForm.note?.trim();
 
     if (!firstName) {
       toast.error('Please enter your first name.');
@@ -31,39 +38,51 @@ export default function Contact() {
       toast.error('Please enter your email address.');
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!isValidEmail(email)) {
       toast.error('Please enter a valid email address.');
       return;
     }
-    if (!message) {
-      toast.error('Please enter a message.');
+    if (!phone) {
+      toast.error('Please enter your phone number.');
+      return;
+    }
+    if (!isValidPhone(phone)) {
+      toast.error('Please enter a valid phone number.');
+      return;
+    }
+    if (!note) {
+      toast.error('Please enter a note.');
       return;
     }
 
+    setIsSubmitting(true);
     try {
-      // Show saving toast
-      const savingToast = toast.loading('Saving your message...', {
-        position: 'top-right',
+      await sendSupportInquiryEmail({
+        firstName,
+        lastName,
+        email,
+        phone,
+        note: `Website contact form\n\n${note}`,
       });
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast.success(
+        'Message sent successfully. Our support team will review your submission and contact you shortly.',
+        {
+          position: 'top-right',
+          autoClose: 4000,
+          hideProgressBar: true,
+        }
+      );
 
-      // Show success toast
-      toast.update(savingToast, {
-        render: 'Message sent successfully! You will hear from us soon.',
-        type: 'success',
-        isLoading: false,
-        autoClose: 3000,
-      });
-
-      // Clear form
       clearContactForm();
-    } catch (error) {
-      toast.error('Failed to send message. Please try again.', {
+    } catch (err) {
+      toast.error(getEmailJsErrorMessage(err), {
         position: 'top-right',
-        autoClose: 3000,
+        autoClose: 6000,
+        hideProgressBar: true,
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -174,6 +193,10 @@ export default function Contact() {
 
           <div className="mx-auto max-w-2xl rounded-2xl border border-white/20 bg-black/55 p-8 shadow-2xl backdrop-blur-md md:p-10">
             <form noValidate onSubmit={handleSubmit} className="space-y-6">
+              <fieldset
+                disabled={isSubmitting}
+                className="min-w-0 space-y-6 border-0 p-0 disabled:opacity-75"
+              >
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-white">
@@ -222,26 +245,42 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block mb-2 text-sm font-medium text-white">
-                  Your Message...
+                <label htmlFor="phone" className="block mb-2 text-sm font-medium text-white">
+                  Phone number
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={contactForm.message}
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={contactForm.phone}
                   onChange={handleChange}
-                  rows={5}
-                  className="w-full resize-none rounded-xl border border-white/30 bg-transparent px-4 py-3.5 text-white placeholder-gray-400 transition-colors focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/40"
-                  placeholder="Your Message..."
+                  className="w-full rounded-xl border border-white/30 bg-transparent px-4 py-3.5 text-white placeholder-gray-400 transition-colors focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/40"
+                  placeholder="Phone number"
                   required
                 />
               </div>
-              <button
-                type="submit"
-                className="w-full rounded-full bg-blue-600 px-8 py-4 font-semibold text-white shadow-lg transition hover:bg-blue-700"
-              >
-                Get Support
-              </button>
+              <div>
+                <label htmlFor="note" className="block mb-2 text-sm font-medium text-white">
+                  Note
+                </label>
+                <textarea
+                  id="note"
+                  name="note"
+                  value={contactForm.note}
+                  onChange={handleChange}
+                  rows={5}
+                  className="w-full resize-none rounded-xl border border-white/30 bg-transparent px-4 py-3.5 text-white placeholder-gray-400 transition-colors focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400/40"
+                  placeholder="How can we help?"
+                  required
+                />
+              </div>
+              </fieldset>
+              <FormSubmitButton
+                isLoading={isSubmitting}
+                idleLabel="Get Support"
+                loadingLabel="Sending…"
+                className="rounded-full bg-blue-600 px-8 py-4 text-white shadow-lg hover:bg-blue-700"
+              />
             </form>
           </div>
         </div>

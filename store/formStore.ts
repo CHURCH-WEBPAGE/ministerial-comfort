@@ -4,23 +4,24 @@ interface ContactFormData {
   firstName: string;
   lastName: string;
   email: string;
-  message: string;
+  phone: string;
+  note: string;
 }
 
 interface RegistrationFormData {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  mobile: string;
+  phone: string;
+  note: string;
   eventSlug?: string;
 }
 
 interface FormStore {
-  // Contact form
   contactForm: ContactFormData;
   setContactForm: (data: Partial<ContactFormData>) => void;
   clearContactForm: () => void;
-  
-  // Registration form
+
   registrationForm: RegistrationFormData;
   setRegistrationForm: (data: Partial<RegistrationFormData>) => void;
   clearRegistrationForm: () => void;
@@ -30,13 +31,16 @@ const initialContactForm: ContactFormData = {
   firstName: '',
   lastName: '',
   email: '',
-  message: '',
+  phone: '',
+  note: '',
 };
 
 const initialRegistrationForm: RegistrationFormData = {
-  name: '',
+  firstName: '',
+  lastName: '',
   email: '',
-  mobile: '',
+  phone: '',
+  note: '',
   eventSlug: '',
 };
 
@@ -55,4 +59,3 @@ export const useFormStore = create<FormStore>((set) => ({
     })),
   clearRegistrationForm: () => set({ registrationForm: initialRegistrationForm }),
 }));
-

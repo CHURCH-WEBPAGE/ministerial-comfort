@@ -13,6 +13,7 @@
     "build:og-share": "node scripts/build-og-share.cjs"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.38.0",
     "next": "^14.2.5",
     "react": "^18.3.1",

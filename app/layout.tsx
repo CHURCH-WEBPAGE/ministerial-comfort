@@ -72,14 +72,14 @@ export default function RootLayout({
         <ToastContainer
           position="top-right"
           autoClose={4000}
-          hideProgressBar={false}
+          hideProgressBar
           newestOnTop
           closeOnClick
           rtl={false}
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="light"
+          theme="colored"
           limit={5}
           toastClassName="rounded-lg shadow-md"
           style={{ zIndex: 99999 }}

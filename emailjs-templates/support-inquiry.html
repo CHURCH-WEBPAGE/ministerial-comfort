@@ -1,0 +1,71 @@
+<!--
+  EmailJS — paste into your template (HTML view).
+  Parameters: {{first_name}}, {{last_name}}, {{email}}, {{phone}}, {{note}}, {{received_at}}, {{site_url}}
+  Set “To Email” to: support@foursquaremcr.org
+  Service: service_cwp7lrn  |  Template: template_g54t6ne
+-->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0;padding:0;background-color:#f3f5f8;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;font-size:15px;line-height:1.55;color:#1a2332;">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px;margin:0 auto;background-color:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 12px 40px rgba(40,103,174,0.08);">
+        <tr>
+          <td style="background:linear-gradient(135deg,#2867AE 0%,#1e4d7a 100%);padding:28px 28px 24px;text-align:center;">
+            <h1 style="margin:0;font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#ffffff;line-height:1.25;">New message for the support team</h1>
+            <p style="margin:14px 0 0;font-size:14px;color:rgba(255,255,255,0.92);max-width:480px;margin-left:auto;margin-right:auto;">
+              Please review this submission at your earliest convenience, then reach out with warmth and clarity so the person knows they have been heard.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:28px 28px 8px;">
+            <h2 style="margin:0 0 20px;font-size:14px;color:#475569;">Details of the submission:</h2>
+            <p style="margin:0 0 24px;font-size:13px;color:#64748b;">
+              Received: <strong style="color:#1e293b;">{{received_at}}</strong>
+            </p>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;">
+              <tr>
+                <td style="padding:12px 16px;background-color:#f8fafc;width:34%;font-size:13px;font-weight:600;color:#475569;border-bottom:1px solid #e2e8f0;">First name</td>
+                <td style="padding:12px 16px;font-size:14px;color:#0f172a;border-bottom:1px solid #e2e8f0;">{{first_name}}</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 16px;background-color:#f8fafc;font-size:13px;font-weight:600;color:#475569;border-bottom:1px solid #e2e8f0;">Last name</td>
+                <td style="padding:12px 16px;font-size:14px;color:#0f172a;border-bottom:1px solid #e2e8f0;">{{last_name}}</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 16px;background-color:#f8fafc;font-size:13px;font-weight:600;color:#475569;border-bottom:1px solid #e2e8f0;">Email</td>
+                <td style="padding:12px 16px;font-size:14px;color:#0f172a;border-bottom:1px solid #e2e8f0;">
+                  <a href="mailto:{{email}}" style="color:#2867AE;text-decoration:none;font-weight:600;">{{email}}</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:12px 16px;background-color:#f8fafc;font-size:13px;font-weight:600;color:#475569;border-bottom:1px solid #e2e8f0;">Phone</td>
+                <td style="padding:12px 16px;font-size:14px;color:#0f172a;border-bottom:1px solid #e2e8f0;">
+                  <a href="tel:{{phone}}" style="color:#2867AE;text-decoration:none;font-weight:600;">{{phone}}</a>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="padding:14px 16px 10px;background-color:#f8fafc;font-size:13px;font-weight:600;color:#475569;">Note</td>
+              </tr>
+              <tr>
+                <td colspan="2" style="padding:0 16px 16px;font-size:14px;color:#0f172a;white-space:pre-wrap;word-break:break-word;">{{note}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:22px 28px 28px;background-color:#f8fafc;border-top:1px solid #e2e8f0;">
+            <p style="margin:0 0 12px;font-size:13px;color:#64748b;line-height:1.6;">
+              Please review this submission.
+            </p>
+            <p style="margin:0 0 8px;font-size:12px;color:#94a3b8;">
+              Foursquare MCR · Ministerial Comfort · Automated form delivery via EmailJS
+            </p>
+            <p style="margin:0;font-size:12px;color:#94a3b8;">
+              Public site URL: {{site_url}}
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
