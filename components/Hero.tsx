@@ -31,7 +31,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, ease }}
-                  className="text-sm font-semibold uppercase tracking-[0.28em] text-white/80"
+                  className="text-sm font-semibold uppercase tracking-[0.28em] text-white"
                 >
                   Ministerial Comfort &amp; Renewal
                 </motion.p>
