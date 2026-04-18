@@ -47,7 +47,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.14, ease }}
-                  className="max-w-2xl text-lg leading-relaxed text-white/92 md:text-xl md:leading-relaxed"
+                  className="max-w-2xl text-lg leading-relaxed text-white md:text-xl md:leading-relaxed"
                 >
                   You are not alone. Support, restoration, and guidance are here for you.
                 </motion.p>
